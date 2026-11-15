@@ -1,0 +1,351 @@
+/**
+ * ANNABOOK OFFICIAL - MAIN JAVASCRIPT
+ * Handles Slider, Sidebar Navigation, WhatsApp/Telegram Interactions,
+ * Blog Filtering & Full Article Modals, and Accordions.
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  // --------------------------------------------------------------------------
+  // 1. Hero Image Slider Engine
+  // --------------------------------------------------------------------------
+  const slider = document.querySelector('.hero-slider-section');
+  if (slider) {
+    const slides = slider.querySelectorAll('.slider-slide');
+    const dots = slider.querySelectorAll('.slider-dot');
+    const prevBtn = slider.querySelector('.slider-prev');
+    const nextBtn = slider.querySelector('.slider-next');
+    let currentSlide = 0;
+    let slideInterval = null;
+    const intervalTime = 5500; // 5.5 seconds per slide
+
+    function goToSlide(index) {
+      slides[currentSlide].classList.remove('active');
+      if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
+
+      currentSlide = (index + slides.length) % slides.length;
+
+      slides[currentSlide].classList.add('active');
+      if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+      goToSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      goToSlide(currentSlide - 1);
+    }
+
+    function startAutoSlide() {
+      stopAutoSlide();
+      slideInterval = setInterval(nextSlide, intervalTime);
+    }
+
+    function stopAutoSlide() {
+      if (slideInterval) {
+        clearInterval(slideInterval);
+        slideInterval = null;
+      }
+    }
+
+    // Event Listeners for Controls
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        nextSlide();
+        startAutoSlide();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        prevSlide();
+        startAutoSlide();
+      });
+    }
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        goToSlide(idx);
+        startAutoSlide();
+      });
+    });
+
+    // Pause on Hover
+    slider.addEventListener('mouseenter', stopAutoSlide);
+    slider.addEventListener('mouseleave', startAutoSlide);
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    // Touch Swipe Gestures
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    slider.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 50) {
+        nextSlide();
+        startAutoSlide();
+      } else if (touchEndX - touchStartX > 50) {
+        prevSlide();
+        startAutoSlide();
+      }
+    }, { passive: true });
+
+    startAutoSlide();
+  }
+
+  // --------------------------------------------------------------------------
+  // 2. WhatsApp & Telegram Interactions
+  // (Note: Telegram has official link; WhatsApp currently has no number,
+  // so we display an informative high-end modal / notification)
+  // --------------------------------------------------------------------------
+  const TELEGRAM_URL = 'https://t.me/Anna_Book_Official';
+  const whatsappButtons = document.querySelectorAll('.trigger-whatsapp');
+
+  whatsappButtons.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openWhatsAppNoticeModal();
+    });
+  });
+
+  // Modal handlers
+  const waModal = document.getElementById('whatsappNoticeModal');
+  const modalCloseBtns = document.querySelectorAll('.modal-close-trigger');
+
+  function openWhatsAppNoticeModal() {
+    if (waModal) {
+      waModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    } else {
+      showToast('WhatsApp Support launching soon! Please join Telegram: @Anna_Book_Official');
+    }
+  }
+
+  function closeAllModals() {
+    document.querySelectorAll('.modal-backdrop').forEach((m) => {
+      m.classList.remove('open');
+    });
+    document.body.style.overflow = '';
+  }
+
+  modalCloseBtns.forEach((btn) => {
+    btn.addEventListener('click', closeAllModals);
+  });
+
+  document.querySelectorAll('.modal-backdrop').forEach((backdrop) => {
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) {
+        closeAllModals();
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAllModals();
+  });
+
+  // --------------------------------------------------------------------------
+  // 3. Left Sidebar Sports Categories Interaction
+  // --------------------------------------------------------------------------
+  const sidebarItems = document.querySelectorAll('.sidebar-item');
+  sidebarItems.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      sidebarItems.forEach((el) => el.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+
+  // --------------------------------------------------------------------------
+  // 4. Header Scroll Effect & Mobile Nav Menu
+  // --------------------------------------------------------------------------
+  const header = document.querySelector('.site-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 30) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  });
+
+  const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+  if (mobileNavToggle && navMenu) {
+    mobileNavToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+      const icon = mobileNavToggle.querySelector('i');
+      if (icon) {
+        if (navMenu.classList.contains('open')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-xmark');
+        } else {
+          icon.classList.remove('fa-xmark');
+          icon.classList.add('fa-bars');
+        }
+      }
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // 5. Blog Filtering & Full Article Modal Reader
+  // --------------------------------------------------------------------------
+  const blogTabBtns = document.querySelectorAll('.blog-tab-btn');
+  const blogCards = document.querySelectorAll('.blog-card');
+
+  blogTabBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      blogTabBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+
+      blogCards.forEach((card) => {
+        const cat = card.getAttribute('data-category');
+        if (filter === 'all' || filter === cat) {
+          card.style.display = 'flex';
+          card.style.animation = 'fadeIn 0.4s ease forwards';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Blog Article Data for Modal Reader
+  const blogArticlesData = {
+    'cricket-guide': {
+      title: 'Top Strategies for Cricket Match Analysis & Exchange Trading 2026',
+      category: 'Cricket Guide',
+      date: 'Nov 14, 2026',
+      author: 'AnnaBook Senior Analyst',
+      readTime: '4 Min Read',
+      image: 'assets/images/blog-cricket.jpg',
+      content: `
+        <p>Cricket exchange betting is distinct from traditional bookmaking. In an exchange, you have the flexibility to <strong>Back</strong> (bet for an outcome) and <strong>Lay</strong> (bet against an outcome), unlocking powerful cashout and risk hedging opportunities.</p>
+        <h4 style="color:#f5a623; margin:16px 0 8px;">1. Pitch & Dew Factor Analysis</h4>
+        <p>In subcontinental conditions (IPL & Bilateral T20s), dew often turns second innings into batting paradises. Look at toss decisions and ground historical chase success rates before placing high-volume bets.</p>
+        <h4 style="color:#f5a623; margin:16px 0 8px;">2. Capital Preservation & Green Book Strategy</h4>
+        <p>A smart exchange bettor always "greens" their book when odds swing in their favor. By locking profit across both teams, you eliminate variance and ensure steady earnings regardless of the final ball outcome.</p>
+        <h4 style="color:#f5a623; margin:16px 0 8px;">3. Instant Verification on AnnaBook</h4>
+        <p>Never play on unverified, delayed feeds. AnnaBook IDs provide official 0-second latency data feeds and guaranteed 2-minute instant cashout to your verified UPI/bank account.</p>
+      `
+    },
+    'ipl-2026': {
+      title: 'IPL 2026 Season Mega Preview & Team Predictions',
+      category: 'IPL Specials',
+      date: 'Nov 12, 2026',
+      author: 'Sports Desk',
+      readTime: '5 Min Read',
+      image: 'assets/images/blog-ipl.jpg',
+      content: `
+        <p>The 2026 Indian Premier League is poised to be the most competitive season in cricket history. With revamped mega auctions and high-octane overseas signings, each franchise presents unique market opportunities.</p>
+        <h4 style="color:#f5a623; margin:16px 0 8px;">Key Teams to Watch</h4>
+        <p>Top contenders like Mumbai, Chennai, and Kolkata have fortified their death-over bowling and power-hitting lower orders. Session bets (6-over powerplay runs, 20-over team totals) will offer premier value.</p>
+        <h4 style="color:#f5a623; margin:16px 0 8px;">How to Maximize Your IPL Profits on AnnaBook</h4>
+        <p>AnnaBook offers the highest market limits and lowest commissions in India. Get your IPL VIP Master ID today via our official Telegram channel with a 10% instant welcome bonus.</p>
+      `
+    },
+    'football-tips': {
+      title: 'UEFA Champions League: In-Play In-Depth Analysis & Cashout Mastery',
+      category: 'Football',
+      date: 'Nov 09, 2026',
+      author: 'Global Football Trader',
+      readTime: '6 Min Read',
+      image: 'assets/images/blog-football.jpg',
+      content: `
+        <p>Football betting in the Champions League demands deep statistical rigor: xG (Expected Goals), high press intensity, and squad rotation patterns during European midweeks.</p>
+        <h4 style="color:#f5a623; margin:16px 0 8px;">In-Play Momentum Swings</h4>
+        <p>The 60th to 80th-minute mark frequently experiences tactical substitutions that trigger goal spurts. Exchange markets allow you to enter when odds on Over 2.5 or Over 1.5 peak and cash out upon the next conversion.</p>
+        <h4 style="color:#f5a623; margin:16px 0 8px;">AnnaBook Instant Cashout Feature</h4>
+        <p>With our ultra-responsive mobile exchange platform, lock in your returns with a single tap before late injury-time reversals can harm your balance.</p>
+      `
+    },
+    'security-guide': {
+      title: 'Safe & Instant Withdrawals: Essential Security Practices for Online IDs',
+      category: 'Security & Guide',
+      date: 'Nov 05, 2026',
+      author: 'Cyber & Fraud Unit',
+      readTime: '3 Min Read',
+      image: 'assets/images/blog-security.jpg',
+      content: `
+        <p>Your security is AnnaBook's #1 commitment. In today's digital landscape, thousands of unauthorized clones attempt to impersonate legitimate exchange providers.</p>
+        <h4 style="color:#f5a623; margin:16px 0 8px;">Crucial Safety Rules</h4>
+        <ul>
+          <li><strong>Official Telegram Only:</strong> Only communicate via <code style="color:#00d2ff;">https://t.me/Anna_Book_Official</code>. Never send funds to random personal UPI IDs or unverified WhatsApp numbers.</li>
+          <li><strong>2-Factor Authentication:</strong> Always enable 2FA and never share your one-time passwords with anyone claiming to be support agents.</li>
+          <li><strong>Direct Payout Verification:</strong> AnnaBook processes all withdrawals directly to your registered bank or UPI account in under 2 minutes with 0% hidden fee deductions.</li>
+        </ul>
+      `
+    }
+  };
+
+  const articleModal = document.getElementById('blogArticleModal');
+  const readMoreButtons = document.querySelectorAll('.trigger-blog-modal');
+
+  readMoreButtons.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const articleId = btn.getAttribute('data-article-id');
+      const data = blogArticlesData[articleId];
+      if (data && articleModal) {
+        document.getElementById('modalBlogImage').src = data.image;
+        document.getElementById('modalBlogCategory').textContent = data.category;
+        document.getElementById('modalBlogTitle').textContent = data.title;
+        document.getElementById('modalBlogMeta').innerHTML = `
+          <span><i class="fa-regular fa-calendar" style="color:var(--gold-primary);"></i> ${data.date}</span>
+          <span><i class="fa-regular fa-clock" style="color:var(--gold-primary);"></i> ${data.readTime}</span>
+          <span><i class="fa-solid fa-user-pen" style="color:var(--gold-primary);"></i> ${data.author}</span>
+        `;
+        document.getElementById('modalBlogBody').innerHTML = data.content;
+        articleModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  // --------------------------------------------------------------------------
+  // 6. FAQ Accordion
+  // --------------------------------------------------------------------------
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach((item) => {
+    const question = item.querySelector('.faq-question');
+    question?.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      faqItems.forEach((other) => other.classList.remove('active'));
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    });
+  });
+
+  // --------------------------------------------------------------------------
+  // 7. Toast Notification Utility
+  // --------------------------------------------------------------------------
+  function showToast(message) {
+    let toast = document.querySelector('.toast-notice');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.className = 'toast-notice';
+      document.body.appendChild(toast);
+    }
+    toast.innerHTML = `<i class="fa-solid fa-circle-info" style="color:var(--gold-primary);font-size:1.3rem;"></i> <span>${message}</span>`;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 4500);
+  }
+
+  // Expose for inline handlers if needed
+  window.openWhatsAppNoticeModal = openWhatsAppNoticeModal;
+  window.closeAllModals = closeAllModals;
+  window.showToast = showToast;
+});
