@@ -253,6 +253,163 @@ button, input, select, textarea {
   font-family: var(--font-main);
 }
 
+/* --------------------------------------------------------------------------
+   Animated Official Brand Logo (Smooth ball spin, subtle wheel rocking, gold sweep, metallic shine)
+   -------------------------------------------------------------------------- */
+.brand-logo-animated {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  line-height: 0;
+  transition: transform 0.25s ease;
+}
+
+.brand-logo-animated:hover {
+  transform: translateY(-2px);
+}
+
+.logo-anim-container {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  width: 175px;
+  height: auto;
+  aspect-ratio: 757 / 224;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.7), 0 0 12px rgba(245, 166, 35, 0.2);
+  border: 1.5px solid rgba(245, 166, 35, 0.4);
+  background: #000000;
+  transition: all 0.3s ease;
+}
+
+.brand-logo-animated:hover .logo-anim-container {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.8), 0 0 20px rgba(245, 166, 35, 0.5);
+  border-color: var(--gold-light);
+}
+
+.logo-layer-base {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  position: relative;
+  z-index: 1;
+}
+
+.logo-layer-wheel {
+  position: absolute;
+  left: 62.35%;
+  top: 5.36%;
+  width: 11.36%;
+  height: 38.39%;
+  border-radius: 50%;
+  animation: logoWheelSlightRotate 4.5s ease-in-out infinite;
+  transform-origin: center center;
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0 0 4px rgba(245, 166, 35, 0.4));
+}
+
+.logo-layer-ball {
+  position: absolute;
+  left: 75.56%;
+  top: 5.36%;
+  width: 11.36%;
+  height: 38.39%;
+  border-radius: 50%;
+  animation: logoCricketBallSpin 5s linear infinite;
+  transform-origin: center center;
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
+}
+
+.logo-layer-sweep {
+  position: absolute;
+  top: -20%;
+  left: -140%;
+  width: 90%;
+  height: 140%;
+  background: linear-gradient(
+    110deg,
+    transparent 15%,
+    rgba(255, 215, 0, 0.08) 32%,
+    rgba(255, 235, 130, 0.45) 50%,
+    rgba(255, 255, 255, 0.65) 53%,
+    rgba(255, 235, 130, 0.45) 56%,
+    rgba(255, 215, 0, 0.08) 70%,
+    transparent 85%
+  );
+  transform: skewX(-25deg);
+  animation: logoGoldSweep 4.2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 3;
+  mix-blend-mode: screen;
+}
+
+.logo-layer-shine {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 35%, rgba(255, 220, 100, 0.18) 0%, rgba(255, 200, 50, 0.05) 45%, transparent 75%);
+  animation: logoMetallicShimmer 3.2s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 4;
+  mix-blend-mode: overlay;
+}
+
+@keyframes logoCricketBallSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes logoWheelSlightRotate {
+  0% {
+    transform: rotate(-16deg);
+  }
+  50% {
+    transform: rotate(16deg);
+  }
+  100% {
+    transform: rotate(-16deg);
+  }
+}
+
+@keyframes logoGoldSweep {
+  0% {
+    left: -140%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  55% {
+    left: 140%;
+    opacity: 1;
+  }
+  60%, 100% {
+    left: 140%;
+    opacity: 0;
+  }
+}
+
+@keyframes logoMetallicShimmer {
+  0% {
+    opacity: 0.3;
+    filter: brightness(0.96);
+  }
+  100% {
+    opacity: 0.9;
+    filter: brightness(1.15) drop-shadow(0 0 10px rgba(245, 166, 35, 0.4));
+  }
+}
+
 /* Nav Menu */
 .nav-menu {
   display: flex;
@@ -2136,7 +2293,13 @@ button, input, select, textarea {
     position: fixed;
     top: var(--header-height);
     left: 0;
-    width: 100%;
+    right: 0;
+    width: 100vw;
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: calc(100vh - var(--header-height));
     background: rgba(7, 10, 18, 0.98);
     backdrop-filter: blur(20px);
     flex-direction: column;
@@ -2146,6 +2309,7 @@ button, input, select, textarea {
     border-bottom: 1px solid var(--gold-border);
     transform: translateY(-120%);
     opacity: 0;
+    visibility: hidden;
     transition: all 0.35s ease;
     z-index: 90;
   }
@@ -2153,6 +2317,41 @@ button, input, select, textarea {
   .nav-menu.open {
     transform: translateY(0);
     opacity: 1;
+    visibility: visible;
+  }
+
+  body.nav-open {
+    overflow: hidden !important;
+  }
+
+  .nav-dropdown-wrapper {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .nav-dropdown-wrapper .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    background: rgba(14, 20, 34, 0.85);
+    border: 1px solid rgba(245, 166, 35, 0.25);
+    border-radius: 8px;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-top: 8px;
+    padding: 8px 12px;
+  }
+
+  .nav-dropdown-wrapper .dropdown-item {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    white-space: normal;
+    word-break: break-word;
   }
 
   .mobile-nav-toggle {
@@ -2189,86 +2388,534 @@ button, input, select, textarea {
 }
 
 @media (max-width: 768px) {
+  /* Prevent horizontal scroll / blowout completely */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    position: relative !important;
+    padding-bottom: 78px !important; /* Space for the bottom floating dock so nothing overlaps */
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box !important;
+  }
+
+  /* Header & Navigation */
+  .site-header {
+    height: 62px !important;
+  }
+
+  .header-container {
+    padding: 0 12px !important;
+    gap: 8px !important;
+  }
+
+  .brand-logo-animated .logo-anim-container {
+    width: 135px !important;
+    border-radius: 8px !important;
+  }
+
+  .header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
   .header-actions .btn-header-login {
-    display: none;
+    display: none !important; /* Secondary login hidden in mobile header; Signup stays prominent */
+  }
+
+  .header-actions .btn-header-signup {
+    padding: 6px 12px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .mobile-nav-toggle {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 1.05rem !important;
+  }
+
+  /* Main Layout Ordering: Hero banner FIRST, Sidebar categories SECOND, Live Matches THIRD */
+  .main-layout-container {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 12px !important;
+    gap: 16px !important;
+    margin: 12px auto 24px !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .main-content-flow {
+    display: contents !important;
   }
 
   .hero-slider-section {
-    min-height: auto;
+    order: 1 !important;
+    width: 100% !important;
+  }
+
+  .left-sidebar {
+    order: 2 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    position: static !important;
+    max-height: none !important;
+    margin: 0 !important;
+  }
+
+  #sports-cricket {
+    order: 3 !important;
+    width: 100% !important;
+  }
+
+  .main-content-flow > .section-block:nth-of-type(2) {
+    order: 4 !important;
+    width: 100% !important;
+  }
+
+  #blog-section {
+    order: 5 !important;
+    width: 100% !important;
+  }
+
+  .main-content-flow > .section-block:nth-of-type(4) {
+    order: 6 !important;
+    width: 100% !important;
+  }
+
+  .main-content-flow > .section-block:nth-of-type(5) {
+    order: 7 !important;
+    width: 100% !important;
+  }
+
+  .section-block {
+    width: 100% !important;
+    order: 10;
+  }
+
+  .sidebar-header {
+    padding: 10px 12px !important;
+  }
+
+  .sidebar-title {
+    font-size: 0.95rem !important;
+  }
+
+  .sidebar-scroll-area {
+    max-height: 190px !important;
+    padding: 8px 10px !important;
+  }
+
+  .sidebar-item {
+    padding: 7px 10px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .sidebar-fixed-bottom {
+    padding: 10px !important;
+    gap: 8px !important;
+  }
+
+  .sidebar-fixed-bottom .btn-sidebar-id,
+  .sidebar-fixed-bottom .btn-sidebar-login {
+    padding: 10px 12px !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* Hero Slider Section */
+  .hero-slider-section {
+    aspect-ratio: auto !important;
+    height: auto !important;
+    min-height: 250px !important;
+    border-radius: 14px !important;
+    border-width: 1.5px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8) !important;
+  }
+
+  .slider-container {
+    position: relative !important;
+    width: 100% !important;
+    min-height: 250px !important;
+  }
+
+  .slider-slide {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .slider-slide.slide-cricket {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .slider-banner-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
   }
 
   .slide-football {
-    padding: 20px 16px;
+    padding: 14px 12px 28px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
   }
 
-  .hero-main-title {
-    font-size: 1.8rem;
+  .slide-content-wrapper {
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 3px !important;
+  }
+
+  .crown-badge-wrapper {
+    margin-bottom: 2px !important;
+  }
+
+  .crown-icon {
+    font-size: 1.3rem !important;
   }
 
   .hero-super-title {
-    font-size: 1rem;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .hero-main-title {
+    font-size: 1.45rem !important;
+    letter-spacing: 1px !important;
+    line-height: 1.1 !important;
+    margin: 2px 0 !important;
+  }
+
+  .hero-sub-title {
+    font-size: 0.7rem !important;
+    margin-bottom: 4px !important;
   }
 
   .hero-stats-row {
-    gap: 6px;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    width: 100% !important;
+    margin: 3px 0 !important;
+    flex-wrap: nowrap !important;
   }
 
   .hero-stat-card {
-    min-width: 80px;
-    padding: 6px 8px;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    padding: 4px 3px !important;
+    border-radius: 8px !important;
+  }
+
+  .hero-stat-icon {
+    font-size: 0.82rem !important;
+    margin-bottom: 1px !important;
   }
 
   .hero-stat-title {
-    font-size: 0.8rem;
+    font-size: 0.68rem !important;
+    font-weight: 800 !important;
+  }
+
+  .hero-stat-subtitle {
+    font-size: 0.52rem !important;
+    letter-spacing: 0.2px !important;
   }
 
   .hero-ribbon-bar {
-    font-size: 0.8rem;
-    padding: 5px 10px;
+    padding: 4px 6px !important;
+    font-size: 0.66rem !important;
+    margin: 4px 0 !important;
+    border-radius: 6px !important;
+    width: 100% !important;
+    white-space: normal !important;
+    text-align: center !important;
   }
 
+  .hero-features-list {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    font-size: 0.6rem !important;
+  }
+
+  .slider-arrow-btn {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.75rem !important;
+    background: rgba(7, 10, 18, 0.75) !important;
+    opacity: 0.8 !important;
+    z-index: 12 !important;
+  }
+
+  .slider-prev {
+    left: 6px !important;
+  }
+
+  .slider-next {
+    right: 6px !important;
+  }
+
+  .slider-pagination-dots {
+    bottom: 5px !important;
+    padding: 2px 8px !important;
+    gap: 6px !important;
+    z-index: 12 !important;
+  }
+
+  .slider-dot {
+    width: 6px !important;
+    height: 6px !important;
+  }
+
+  .slider-dot.active {
+    width: 16px !important;
+  }
+
+  /* Section Headers & Typography */
+  .section-header-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    margin-bottom: 14px !important;
+    padding-bottom: 8px !important;
+  }
+
+  .section-main-heading {
+    font-size: 1.25rem !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
+  }
+
+  .section-sub-tag {
+    font-size: 0.72rem !important;
+  }
+
+  .section-view-all {
+    font-size: 0.82rem !important;
+  }
+
+  /* Single Column Grids for Complete Overflow Elimination */
+  .matches-grid,
+  .blog-grid,
+  .trust-features-grid,
+  .steps-grid,
+  .id-types-grid,
+  .features-grid,
+  .services-full-grid,
+  .values-grid,
+  .about-stats-grid,
+  .faq-grid,
+  .timeline-list {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    width: 100% !important;
+  }
+
+  .match-card {
+    padding: 12px !important;
+    border-radius: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Match Odds 50% / 50% side-by-side with zero overflow */
+  .odds-boxes-wrap {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .odd-btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 6px 8px !important;
+    box-sizing: border-box !important;
+  }
+
+  .odd-rate {
+    font-size: 0.95rem !important;
+  }
+
+  .odd-label {
+    font-size: 0.65rem !important;
+  }
+
+  .trust-card,
+  .blog-card,
+  .step-card,
+  .id-card,
+  .service-card {
+    padding: 16px 14px !important;
+    border-radius: 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* WhatsApp & Telegram Floating Buttons: 100% responsive, equal 50%/50% width, non-overlapping */
   .bottom-floating-dock {
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    justify-content: center;
-    gap: 8px;
+    position: fixed !important;
+    bottom: 8px !important;
+    left: 8px !important;
+    right: 8px !important;
+    width: calc(100% - 16px) !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    z-index: 9999 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    pointer-events: auto !important;
   }
 
   .dock-pill-btn {
-    flex: 1;
-    padding: 8px 10px;
-    gap: 8px;
-    justify-content: center;
+    flex: 1 1 0 !important;
+    width: 50% !important;
+    max-width: calc(50% - 4px) !important;
+    min-width: 0 !important;
+    height: 48px !important;
+    padding: 4px 8px !important;
+    gap: 6px !important;
+    box-sizing: border-box !important;
+    border-radius: 999px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    text-decoration: none !important;
+    margin: 0 !important;
   }
 
   .dock-pill-icon {
-    width: 32px;
-    height: 32px;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
   }
 
   .dock-pill-btn.whatsapp-pill .dock-pill-icon {
-    font-size: 1.6rem;
+    font-size: 1.45rem !important;
   }
 
   .dock-pill-btn.telegram-pill .dock-pill-icon {
-    font-size: 1.2rem;
+    font-size: 1.15rem !important;
+  }
+
+  .dock-pill-text {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: left !important;
+    overflow: hidden !important;
   }
 
   .dock-pill-title {
-    font-size: 0.82rem;
+    font-size: 0.72rem !important;
+    line-height: 1.15 !important;
+    font-weight: 800 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 
   .dock-pill-sub {
-    font-size: 0.65rem;
+    font-size: 0.58rem !important;
+    line-height: 1.1 !important;
+    opacity: 0.9 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  /* Modals on mobile */
+  .modal-box {
+    padding: 20px 16px !important;
+    width: 95% !important;
+    border-radius: 14px !important;
+  }
+
+  /* Footer on mobile */
+  .site-footer {
+    padding: 35px 0 95px !important; /* 95px bottom padding ensures floating buttons NEVER cover footer text */
+    margin-top: 35px !important;
+  }
+
+  .footer-container {
+    padding: 0 14px !important;
   }
 
   .footer-top-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    margin-bottom: 24px !important;
   }
 
   .footer-bottom-bar {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 10px !important;
+  }
+
+  .footer-bottom-links {
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+}
+
+/* Extra Compact Screens (360px and below) */
+@media (max-width: 360px) {
+  .brand-logo-animated .logo-anim-container {
+    width: 118px !important;
+  }
+
+  .dock-pill-title {
+    font-size: 0.65rem !important;
+  }
+
+  .dock-pill-sub {
+    font-size: 0.52rem !important;
+  }
+
+  .hero-main-title {
+    font-size: 1.35rem !important;
+  }
+
+  .hero-stat-card {
+    padding: 3px 2px !important;
+  }
+
+  .hero-stat-title {
+    font-size: 0.62rem !important;
+  }
+
+  .hero-stat-subtitle {
+    font-size: 0.48rem !important;
   }
 }

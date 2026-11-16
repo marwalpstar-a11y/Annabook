@@ -182,10 +182,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const navMenu = document.querySelector('.nav-menu');
   if (mobileNavToggle && navMenu) {
     mobileNavToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('open');
+      const isOpen = navMenu.classList.toggle('open');
+      document.body.classList.toggle('nav-open', isOpen);
       const icon = mobileNavToggle.querySelector('i');
       if (icon) {
-        if (navMenu.classList.contains('open')) {
+        if (isOpen) {
           icon.classList.remove('fa-bars');
           icon.classList.add('fa-xmark');
         } else {
@@ -193,6 +194,19 @@ document.addEventListener('DOMContentLoaded', () => {
           icon.classList.add('fa-bars');
         }
       }
+    });
+
+    // Close mobile nav when clicking any nav link
+    navMenu.querySelectorAll('.nav-link, .dropdown-item').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        document.body.classList.remove('nav-open');
+        const icon = mobileNavToggle.querySelector('i');
+        if (icon) {
+          icon.classList.remove('fa-xmark');
+          icon.classList.add('fa-bars');
+        }
+      });
     });
   }
 
