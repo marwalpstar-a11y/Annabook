@@ -58,8 +58,9 @@
 
       <!-- Action Buttons -->
       <div class="header-actions">
-        <button class="btn-header-login" onclick="openLoginModal()">Login</button>
-        <a href="https://t.me/Anna_Book_Official" target="_blank" rel="noopener noreferrer" class="btn-header-signup">Signup</a>
+        <button type="button" class="btn-header-login" onclick="openLoginModal()" title="Login to AnnaBook">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+        </button>
         <button class="mobile-nav-toggle" aria-label="Toggle navigation menu">
           <i class="fa-solid fa-bars"></i>
         </button>
@@ -83,70 +84,70 @@
 
       <!-- Vertically Scrollable List -->
       <div class="sidebar-scroll-area">
-        <a href="#sports-cricket" class="sidebar-item active">
+        <a href="#sports-cricket" class="sidebar-item active" data-category="cricket">
           <span class="sidebar-item-icon"><i class="fa-solid fa-baseball-bat-ball"></i></span>
           <span class="sidebar-item-name">Cricket</span>
           <span class="sidebar-badge live">Live</span>
         </a>
-        <a href="#sports-football" class="sidebar-item">
+        <a href="#sports-football" class="sidebar-item" data-category="football">
           <span class="sidebar-item-icon"><i class="fa-solid fa-futbol"></i></span>
           <span class="sidebar-item-name">Football</span>
         </a>
-        <a href="#sports-bbl" class="sidebar-item">
+        <a href="#sports-bbl" class="sidebar-item" data-category="bbl">
           <span class="sidebar-item-icon"><i class="fa-solid fa-star"></i></span>
           <span class="sidebar-item-name">BBL League</span>
         </a>
-        <a href="#sports-ipl" class="sidebar-item">
+        <a href="#sports-ipl" class="sidebar-item" data-category="ipl">
           <span class="sidebar-item-icon"><i class="fa-solid fa-award"></i></span>
           <span class="sidebar-item-name">IPL Cricket</span>
           <span class="sidebar-badge hot">Hot</span>
         </a>
-        <a href="#sports-slots" class="sidebar-item">
+        <a href="#sports-slots" class="sidebar-item" data-category="slots">
           <span class="sidebar-item-icon"><i class="fa-solid fa-gamepad"></i></span>
           <span class="sidebar-item-name">Slot Games</span>
         </a>
-        <a href="#sports-t20" class="sidebar-item">
+        <a href="#sports-t20" class="sidebar-item" data-category="t20">
           <span class="sidebar-item-icon"><i class="fa-solid fa-trophy"></i></span>
           <span class="sidebar-item-name">T20 World Cup</span>
         </a>
-        <a href="#sports-basketball" class="sidebar-item">
+        <a href="#sports-basketball" class="sidebar-item" data-category="basketball">
           <span class="sidebar-item-icon"><i class="fa-solid fa-basketball"></i></span>
           <span class="sidebar-item-name">Basketball</span>
         </a>
-        <a href="#sports-wpl" class="sidebar-item">
+        <a href="#sports-wpl" class="sidebar-item" data-category="wpl">
           <span class="sidebar-item-icon"><i class="fa-solid fa-circle-nodes"></i></span>
           <span class="sidebar-item-name">WPL League</span>
         </a>
-        <a href="#sports-kabaddi" class="sidebar-item">
+        <a href="#sports-kabaddi" class="sidebar-item" data-category="kabaddi">
           <span class="sidebar-item-icon"><i class="fa-solid fa-people-robbery"></i></span>
           <span class="sidebar-item-name">Kabaddi</span>
         </a>
-        <a href="#sports-casino" class="sidebar-item">
+        <a href="#sports-casino" class="sidebar-item" data-category="casino">
           <span class="sidebar-item-icon"><i class="fa-solid fa-dice"></i></span>
           <span class="sidebar-item-name">Live Casino</span>
           <span class="sidebar-badge live">24/7</span>
         </a>
-        <a href="#sports-teenpatti" class="sidebar-item">
+        <a href="#sports-teenpatti" class="sidebar-item" data-category="teenpatti">
           <span class="sidebar-item-icon"><i class="fa-solid fa-clone"></i></span>
           <span class="sidebar-item-name">Teen Patti</span>
         </a>
-        <a href="#sports-tennis" class="sidebar-item">
+        <a href="#sports-tennis" class="sidebar-item" data-category="tennis">
           <span class="sidebar-item-icon"><i class="fa-solid fa-table-tennis-paddle-ball"></i></span>
           <span class="sidebar-item-name">Tennis</span>
         </a>
-        <a href="#sports-horse" class="sidebar-item">
+        <a href="#sports-horse" class="sidebar-item" data-category="horse">
           <span class="sidebar-item-icon"><i class="fa-solid fa-horse-head"></i></span>
           <span class="sidebar-item-name">Horse Racing</span>
         </a>
-        <a href="#sports-tabletennis" class="sidebar-item">
+        <a href="#sports-tabletennis" class="sidebar-item" data-category="tabletennis">
           <span class="sidebar-item-icon"><i class="fa-solid fa-volleyball"></i></span>
           <span class="sidebar-item-name">Table Tennis</span>
         </a>
-        <a href="#sports-greyhounds" class="sidebar-item">
+        <a href="#sports-greyhounds" class="sidebar-item" data-category="greyhounds">
           <span class="sidebar-item-icon"><i class="fa-solid fa-dog"></i></span>
           <span class="sidebar-item-name">Greyhounds</span>
         </a>
-        <a href="#sports-esports" class="sidebar-item">
+        <a href="#sports-esports" class="sidebar-item" data-category="esports">
           <span class="sidebar-item-icon"><i class="fa-solid fa-vr-cardboard"></i></span>
           <span class="sidebar-item-name">Esports</span>
         </a>
@@ -166,61 +167,1026 @@
     <!-- Main Content Right Area -->
     <section class="main-content-flow">
 
-      <!-- Hero Section Image Slider (NO WhatsApp/Telegram Buttons in Hero Banner as Requested) -->
+      <!-- Hero Section Dynamic Sports Slider (2 Slides per category, remaining hidden until selected) -->
       <div class="hero-slider-section">
         <div class="slider-container">
           
-          <!-- Slide 1: Clean Cricket Banner (Using user's provided image without buttons) -->
-          <div class="slider-slide active">
-            <img src="assets/images/hero-cricket.jpg" alt="Get Your AnnaBook ID from a Trusted &amp; Verified Provider" class="slider-banner-img">
+          <!-- ==================== 1. CRICKET ==================== -->
+          <div class="category-slide-group active" data-category="cricket">
+            <!-- Slide 1: Official Indian Team Cricket Banner -->
+            <div class="slider-slide active">
+              <img src="assets/images/hero-cricket.jpg" alt="Get Your AnnaBook Cricket ID" class="slider-banner-img">
+            </div>
+            <!-- Slide 2: Cricket Interactive ID & Stat Slide -->
+            <div class="slider-slide slide-themed slide-cricket-theme">
+              <div class="slide-content-wrapper">
+                <div class="crown-badge-wrapper">
+                  <i class="fa-solid fa-crown crown-icon"></i>
+                </div>
+                <div class="hero-super-title">India's #1 Trusted Exchange</div>
+                <h2 class="hero-main-title">ANNABOOK CRICKET ID</h2>
+                <div class="hero-sub-title">Live Ball-by-Ball Match Odds, Fancy &amp; Session Bets</div>
+                <div class="hero-stats-row">
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-bolt hero-stat-icon"></i>
+                    <div class="hero-stat-title">24 HOUR</div>
+                    <div class="hero-stat-subtitle">SERVICE</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-users hero-stat-icon"></i>
+                    <div class="hero-stat-title">250+</div>
+                    <div class="hero-stat-subtitle">BRANCHES</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-shield-halved hero-stat-icon"></i>
+                    <div class="hero-stat-title">MIN ID</div>
+                    <div class="hero-stat-subtitle">100</div>
+                  </div>
+                </div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>We Provide Verified Cricket &amp; Exchange IDs</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Fast Activation</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> 2-Min Instant Cashout</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> 100% Payout Safety</div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <!-- Slide 2: Football & Global Sports Exchange Theme (No buttons inside) -->
-          <div class="slider-slide slide-football">
-            <div class="slide-content-wrapper">
-              <div class="crown-badge-wrapper">
-                <i class="fa-solid fa-crown crown-icon"></i>
-              </div>
-              <div class="hero-super-title">Get Your</div>
-              <h2 class="hero-main-title">ANNABOOK ID</h2>
-              <div class="hero-sub-title">from a Trusted &amp; Verified Provider</div>
-
-              <!-- 3 Stat Badges -->
-              <div class="hero-stats-row">
-                <div class="hero-stat-card">
-                  <i class="fa-solid fa-bolt hero-stat-icon"></i>
-                  <div class="hero-stat-title">24 HOUR</div>
-                  <div class="hero-stat-subtitle">SERVICE</div>
+          <!-- ==================== 2. FOOTBALL ==================== -->
+          <div class="category-slide-group" data-category="football">
+            <!-- Slide 1: Football Action Visual Banner -->
+            <div class="slider-slide slide-visual-banner slide-football-theme active">
+              <div class="slide-content-wrapper">
+                <span class="slide-category-tag live"><i class="fa-solid fa-circle"></i> UEFA &amp; Premier League</span>
+                <div class="hero-super-title">Global Football Exchange</div>
+                <h2 class="hero-main-title">FOOTBALL BETTING ID</h2>
+                <div class="hero-sub-title">Premier League, Champions League, La Liga &amp; World Cup Live Rates</div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>500+ Live Football Markets • High Odds Guarantee</span>
+                  <span class="slashes">///</span>
                 </div>
-                <div class="hero-stat-card">
-                  <i class="fa-solid fa-users hero-stat-icon"></i>
-                  <div class="hero-stat-title">250+</div>
-                  <div class="hero-stat-subtitle">BRANCHES</div>
-                </div>
-                <div class="hero-stat-card">
-                  <i class="fa-solid fa-shield-halved hero-stat-icon"></i>
-                  <div class="hero-stat-title">MIN ID</div>
-                  <div class="hero-stat-subtitle">100</div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> 90-Min Live Cashout</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Over/Under &amp; Handicap</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Real-Time Stats</div>
                 </div>
               </div>
-
-              <!-- Gold Ribbon Bar -->
-              <div class="hero-ribbon-bar">
-                <span class="slashes">///</span>
-                <span>We Provide Verified Football &amp; Casino IDs</span>
-                <span class="slashes">///</span>
+              <div class="slide-visual-graphic">
+                <div class="graphic-glow-circle"></div>
+                <i class="fa-solid fa-futbol graphic-main-icon"></i>
               </div>
+            </div>
+            <!-- Slide 2: Football Interactive ID Slide -->
+            <div class="slider-slide slide-themed slide-football-theme">
+              <div class="slide-content-wrapper">
+                <div class="crown-badge-wrapper">
+                  <i class="fa-solid fa-crown crown-icon"></i>
+                </div>
+                <div class="hero-super-title">Get Your Official</div>
+                <h2 class="hero-main-title">ANNABOOK FOOTBALL ID</h2>
+                <div class="hero-sub-title">90-Min Live Cashout • Handicap, Over/Under &amp; Correct Score</div>
+                <div class="hero-stats-row">
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-trophy hero-stat-icon"></i>
+                    <div class="hero-stat-title">UCL &amp; EPL</div>
+                    <div class="hero-stat-subtitle">ODDS</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-chart-line hero-stat-icon"></i>
+                    <div class="hero-stat-title">LIVE</div>
+                    <div class="hero-stat-subtitle">IN-PLAY</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-shield-halved hero-stat-icon"></i>
+                    <div class="hero-stat-title">MIN ID</div>
+                    <div class="hero-stat-subtitle">100</div>
+                  </div>
+                </div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Verified Premier League, UCL &amp; FIFA IDs</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Instant Deposit &amp; Payout</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Verified Bookmaker IDs</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> 24/7 Dedicated Manager</div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-              <!-- Feature Checks -->
-              <div class="hero-features-row">
-                <div class="hero-feature-item">
-                  <i class="fa-regular fa-circle-check"></i> Fast Activation
+          <!-- ==================== 3. BBL LEAGUE ==================== -->
+          <div class="category-slide-group" data-category="bbl">
+            <!-- Slide 1: BBL Visual Banner -->
+            <div class="slider-slide slide-visual-banner slide-bbl-theme active">
+              <div class="slide-content-wrapper">
+                <span class="slide-category-tag hot"><i class="fa-solid fa-fire"></i> KFC BBL 2026</span>
+                <div class="hero-super-title">Big Bash League Season 2026</div>
+                <h2 class="hero-main-title">BBL BETTING ID</h2>
+                <div class="hero-sub-title">Perth Scorchers, Sydney Sixers, Melbourne Stars &amp; Heat Live Odds</div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Super Over, Power Surge &amp; Player Performance Fancy</span>
+                  <span class="slashes">///</span>
                 </div>
-                <div class="hero-feature-item">
-                  <i class="fa-regular fa-circle-check"></i> Secure &amp; Reliable
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Ball-by-Ball Live Rates</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Australian Stadium Feeds</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> 2-Min Fast Cashout</div>
                 </div>
-                <div class="hero-feature-item">
-                  <i class="fa-regular fa-circle-check"></i> Expert Support
+              </div>
+              <div class="slide-visual-graphic">
+                <div class="graphic-glow-circle"></div>
+                <i class="fa-solid fa-star graphic-main-icon"></i>
+              </div>
+            </div>
+            <!-- Slide 2: BBL Interactive ID Slide -->
+            <div class="slider-slide slide-themed slide-bbl-theme">
+              <div class="slide-content-wrapper">
+                <div class="crown-badge-wrapper">
+                  <i class="fa-solid fa-crown crown-icon"></i>
+                </div>
+                <div class="hero-super-title">Get Your Official</div>
+                <h2 class="hero-main-title">ANNABOOK BBL ID</h2>
+                <div class="hero-sub-title">Australia's Premier T20 Tournament with Live Ball-to-Ball Rates</div>
+                <div class="hero-stats-row">
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-star hero-stat-icon"></i>
+                    <div class="hero-stat-title">TOP BBL</div>
+                    <div class="hero-stat-subtitle">ODDS</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-chart-pie hero-stat-icon"></i>
+                    <div class="hero-stat-title">FANCY</div>
+                    <div class="hero-stat-subtitle">SESSIONS</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-shield-halved hero-stat-icon"></i>
+                    <div class="hero-stat-title">MIN ID</div>
+                    <div class="hero-stat-subtitle">100</div>
+                  </div>
+                </div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Official Big Bash League 2026 Match Odds</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> 100% Verified BBL ID</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Zero Commission on Deposits</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> 24/7 Master Support</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== 4. IPL CRICKET ==================== -->
+          <div class="category-slide-group" data-category="ipl">
+            <!-- Slide 1: IPL Visual Banner -->
+            <div class="slider-slide slide-visual-banner slide-ipl-theme active">
+              <div class="slide-content-wrapper">
+                <span class="slide-category-tag live"><i class="fa-solid fa-trophy"></i> TATA IPL 2026</span>
+                <div class="hero-super-title">India Ka Apna Mega Tyohar</div>
+                <h2 class="hero-main-title">IPL 2026 CRICKET ID</h2>
+                <div class="hero-sub-title">CSK, MI, RCB, KKR, GT, RR &amp; SRH Live Match Exchange Rates</div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Highest Match Odds, 6-Over Session &amp; Lambi Pari Bets</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> 74 IPL Matches Covered</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> VIP Fancy Markets</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Direct UPI Instant Payout</div>
+                </div>
+              </div>
+              <div class="slide-visual-graphic">
+                <div class="graphic-glow-circle"></div>
+                <i class="fa-solid fa-award graphic-main-icon"></i>
+              </div>
+            </div>
+            <!-- Slide 2: IPL Interactive ID Slide -->
+            <div class="slider-slide slide-themed slide-ipl-theme">
+              <div class="slide-content-wrapper">
+                <div class="crown-badge-wrapper">
+                  <i class="fa-solid fa-crown crown-icon"></i>
+                </div>
+                <div class="hero-super-title">Get Your Official</div>
+                <h2 class="hero-main-title">ANNABOOK IPL ID</h2>
+                <div class="hero-sub-title">Official Verified IPL Exchange ID with 2-Minute Direct Withdrawal</div>
+                <div class="hero-stats-row">
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-trophy hero-stat-icon"></i>
+                    <div class="hero-stat-title">BEST IPL</div>
+                    <div class="hero-stat-subtitle">RATES</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-bolt hero-stat-icon"></i>
+                    <div class="hero-stat-title">BALL-BY</div>
+                    <div class="hero-stat-subtitle">BALL</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-shield-halved hero-stat-icon"></i>
+                    <div class="hero-stat-title">MIN ID</div>
+                    <div class="hero-stat-subtitle">100</div>
+                  </div>
+                </div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>India's Most Trusted IPL Bookmaker Network</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> All IPL Matches Live</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> UPI &amp; Bank Transfer</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> VIP Master IDs</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== 5. SLOT GAMES ==================== -->
+          <div class="category-slide-group" data-category="slots">
+            <!-- Slide 1: Slots Visual Banner -->
+            <div class="slider-slide slide-visual-banner slide-slots-theme active">
+              <div class="slide-content-wrapper">
+                <span class="slide-category-tag hot"><i class="fa-solid fa-gamepad"></i> 5000+ Premium Slots</span>
+                <div class="hero-super-title">Megaways, Crash Games &amp; Jackpots</div>
+                <h2 class="hero-main-title">SLOT GAMES ID</h2>
+                <div class="hero-sub-title">Gates of Olympus, Sweet Bonanza, Aviator &amp; Big Bass Splash</div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Up to 98.8% RTP • Instant Auto-Cashout on Mega Wins</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Pragmatic Play &amp; Spribe</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Free Spins &amp; Multipliers</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Min Spin ₹10</div>
+                </div>
+              </div>
+              <div class="slide-visual-graphic">
+                <div class="graphic-glow-circle"></div>
+                <i class="fa-solid fa-gem graphic-main-icon"></i>
+              </div>
+            </div>
+            <!-- Slide 2: Slots Interactive ID Slide -->
+            <div class="slider-slide slide-themed slide-slots-theme">
+              <div class="slide-content-wrapper">
+                <div class="crown-badge-wrapper">
+                  <i class="fa-solid fa-crown crown-icon"></i>
+                </div>
+                <div class="hero-super-title">Get Your Official</div>
+                <h2 class="hero-main-title">ANNABOOK SLOTS ID</h2>
+                <div class="hero-sub-title">Play High-Roller Slots &amp; Crash Games with 100% Certified RNG</div>
+                <div class="hero-stats-row">
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-chart-line hero-stat-icon"></i>
+                    <div class="hero-stat-title">98.8%</div>
+                    <div class="hero-stat-subtitle">HIGH RTP</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-coins hero-stat-icon"></i>
+                    <div class="hero-stat-title">MEGA</div>
+                    <div class="hero-stat-subtitle">JACKPOTS</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-shield-halved hero-stat-icon"></i>
+                    <div class="hero-stat-title">MIN SPIN</div>
+                    <div class="hero-stat-subtitle">₹10</div>
+                  </div>
+                </div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>100% Fair RNG Certified • Multi-Vendor Casino Hub</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Instant Bonus Drops</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> No Deposit Fee</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Direct Telegram Support</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== 6. T20 WORLD CUP ==================== -->
+          <div class="category-slide-group" data-category="t20">
+            <!-- Slide 1: T20 World Cup Visual Banner -->
+            <div class="slider-slide slide-visual-banner slide-t20-theme active">
+              <div class="slide-content-wrapper">
+                <span class="slide-category-tag live"><i class="fa-solid fa-globe"></i> ICC Men's T20 World Cup</span>
+                <div class="hero-super-title">International Cricket Extravaganza</div>
+                <h2 class="hero-main-title">T20 WORLD CUP ID</h2>
+                <div class="hero-sub-title">India vs Pakistan, Australia, England &amp; South Africa Live Odds</div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Match Winner, Top Batsman, Most Sixes &amp; Over-by-Over</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Ball-by-Ball Live Rates</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Super 8 &amp; Knockouts</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Instant Winnings Transfer</div>
+                </div>
+              </div>
+              <div class="slide-visual-graphic">
+                <div class="graphic-glow-circle"></div>
+                <i class="fa-solid fa-trophy graphic-main-icon"></i>
+              </div>
+            </div>
+            <!-- Slide 2: T20 Interactive ID Slide -->
+            <div class="slider-slide slide-themed slide-t20-theme">
+              <div class="slide-content-wrapper">
+                <div class="crown-badge-wrapper">
+                  <i class="fa-solid fa-crown crown-icon"></i>
+                </div>
+                <div class="hero-super-title">Get Your Official</div>
+                <h2 class="hero-main-title">ANNABOOK T20 ID</h2>
+                <div class="hero-sub-title">World Cup Special Betting IDs with Exclusive Match Day Bonuses</div>
+                <div class="hero-stats-row">
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-globe hero-stat-icon"></i>
+                    <div class="hero-stat-title">WORLD CUP</div>
+                    <div class="hero-stat-subtitle">ODDS</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-users hero-stat-icon"></i>
+                    <div class="hero-stat-title">SUPER 8</div>
+                    <div class="hero-stat-subtitle">MARKETS</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-shield-halved hero-stat-icon"></i>
+                    <div class="hero-stat-title">MIN ID</div>
+                    <div class="hero-stat-subtitle">100</div>
+                  </div>
+                </div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Verified ICC International Exchange Provider</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Live Commentary Sync</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Real-Time Payout</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> 24/7 Helpline</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== 7. BASKETBALL ==================== -->
+          <div class="category-slide-group" data-category="basketball">
+            <!-- Slide 1: Basketball Visual Banner -->
+            <div class="slider-slide slide-visual-banner slide-basketball-theme active">
+              <div class="slide-content-wrapper">
+                <span class="slide-category-tag live"><i class="fa-solid fa-basketball"></i> NBA &amp; EuroLeague</span>
+                <div class="hero-super-title">Fast-Paced Hardwood Action</div>
+                <h2 class="hero-main-title">BASKETBALL BETTING ID</h2>
+                <div class="hero-sub-title">Lakers, Celtics, Warriors, EuroLeague &amp; FIBA Live Spread Rates</div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Point Spread, Over/Under &amp; Quarter-by-Quarter Live Bets</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> NBA Regular &amp; Playoffs</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Player Points Props</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Halftime Fast Settle</div>
+                </div>
+              </div>
+              <div class="slide-visual-graphic">
+                <div class="graphic-glow-circle"></div>
+                <i class="fa-solid fa-basketball graphic-main-icon"></i>
+              </div>
+            </div>
+            <!-- Slide 2: Basketball Interactive ID Slide -->
+            <div class="slider-slide slide-themed slide-basketball-theme">
+              <div class="slide-content-wrapper">
+                <div class="crown-badge-wrapper">
+                  <i class="fa-solid fa-crown crown-icon"></i>
+                </div>
+                <div class="hero-super-title">Get Your Official</div>
+                <h2 class="hero-main-title">ANNABOOK HOOPS ID</h2>
+                <div class="hero-sub-title">Bet Live on NBA Regular Season, Playoffs &amp; Finals with Top Odds</div>
+                <div class="hero-stats-row">
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-basketball hero-stat-icon"></i>
+                    <div class="hero-stat-title">NBA SPREAD</div>
+                    <div class="hero-stat-subtitle">ODDS</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-clock hero-stat-icon"></i>
+                    <div class="hero-stat-title">QUARTER</div>
+                    <div class="hero-stat-subtitle">BETTING</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-shield-halved hero-stat-icon"></i>
+                    <div class="hero-stat-title">MIN ID</div>
+                    <div class="hero-stat-subtitle">100</div>
+                  </div>
+                </div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Rapid Live Settlement • Verified Sports Exchange</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Player Points Props</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Halftime Cashout</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> 24/7 Dedicated Support</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== 8. WPL LEAGUE ==================== -->
+          <div class="category-slide-group" data-category="wpl">
+            <!-- Slide 1: WPL Visual Banner -->
+            <div class="slider-slide slide-visual-banner slide-wpl-theme active">
+              <div class="slide-content-wrapper">
+                <span class="slide-category-tag hot"><i class="fa-solid fa-circle-nodes"></i> TATA WPL 2026</span>
+                <div class="hero-super-title">Women's Premier League Special</div>
+                <h2 class="hero-main-title">WPL BETTING ID</h2>
+                <div class="hero-sub-title">Mumbai Indians, DC, RCB, UP Warriorz &amp; Gujarat Giants Odds</div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Exclusive Women's T20 Exchange Odds &amp; Session Betting</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Ball-to-Ball Tracking</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Top Wicket &amp; Run Fancy</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Instant 2-Min Payout</div>
+                </div>
+              </div>
+              <div class="slide-visual-graphic">
+                <div class="graphic-glow-circle"></div>
+                <i class="fa-solid fa-crown graphic-main-icon"></i>
+              </div>
+            </div>
+            <!-- Slide 2: WPL Interactive ID Slide -->
+            <div class="slider-slide slide-themed slide-wpl-theme">
+              <div class="slide-content-wrapper">
+                <div class="crown-badge-wrapper">
+                  <i class="fa-solid fa-crown crown-icon"></i>
+                </div>
+                <div class="hero-super-title">Get Your Official</div>
+                <h2 class="hero-main-title">ANNABOOK WPL ID</h2>
+                <div class="hero-sub-title">Celebrate Women's Cricket with India's #1 Verified Platform</div>
+                <div class="hero-stats-row">
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-trophy hero-stat-icon"></i>
+                    <div class="hero-stat-title">HIGH WPL</div>
+                    <div class="hero-stat-subtitle">ODDS</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-bolt hero-stat-icon"></i>
+                    <div class="hero-stat-title">FANCY</div>
+                    <div class="hero-stat-subtitle">SESSIONS</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-shield-halved hero-stat-icon"></i>
+                    <div class="hero-stat-title">MIN ID</div>
+                    <div class="hero-stat-subtitle">100</div>
+                  </div>
+                </div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>100% Payout Safety • 2-Minute Deposit &amp; Cashout</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Ball-to-Ball Tracking</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Instant Activation</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> VIP Helpline</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== 9. KABADDI ==================== -->
+          <div class="category-slide-group" data-category="kabaddi">
+            <!-- Slide 1: Kabaddi Visual Banner -->
+            <div class="slider-slide slide-visual-banner slide-kabaddi-theme active">
+              <div class="slide-content-wrapper">
+                <span class="slide-category-tag live"><i class="fa-solid fa-people-robbery"></i> Pro Kabaddi League</span>
+                <div class="hero-super-title">Desh Ka Khel, Live Exchange Par</div>
+                <h2 class="hero-main-title">KABADDI BETTING ID</h2>
+                <div class="hero-sub-title">Patna Pirates, Puneri Paltan, Jaipur Pink Panthers &amp; Telugu Titans</div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Super Raid, High 5, Tackle Points &amp; Full Match Odds</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Live Raid-by-Raid Odds</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Real-Time Player Points</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Zero Deduction on Win</div>
+                </div>
+              </div>
+              <div class="slide-visual-graphic">
+                <div class="graphic-glow-circle"></div>
+                <i class="fa-solid fa-hand-fist graphic-main-icon"></i>
+              </div>
+            </div>
+            <!-- Slide 2: Kabaddi Interactive ID Slide -->
+            <div class="slider-slide slide-themed slide-kabaddi-theme">
+              <div class="slide-content-wrapper">
+                <div class="crown-badge-wrapper">
+                  <i class="fa-solid fa-crown crown-icon"></i>
+                </div>
+                <div class="hero-super-title">Get Your Official</div>
+                <h2 class="hero-main-title">ANNABOOK KABADDI ID</h2>
+                <div class="hero-sub-title">Live PKL Betting with Instant Line Movement &amp; Fast Cashout</div>
+                <div class="hero-stats-row">
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-hand-fist hero-stat-icon"></i>
+                    <div class="hero-stat-title">LIVE PKL</div>
+                    <div class="hero-stat-subtitle">RATES</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-bolt hero-stat-icon"></i>
+                    <div class="hero-stat-title">SUPER</div>
+                    <div class="hero-stat-subtitle">TACKLE</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-shield-halved hero-stat-icon"></i>
+                    <div class="hero-stat-title">MIN ID</div>
+                    <div class="hero-stat-subtitle">100</div>
+                  </div>
+                </div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>India's Premier Kabaddi Bookmaker Network</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Verified Player Stats</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Instant 2-Min Payout</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> No Hidden Cuts</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== 10. LIVE CASINO ==================== -->
+          <div class="category-slide-group" data-category="casino">
+            <!-- Slide 1: Live Casino Visual Banner -->
+            <div class="slider-slide slide-visual-banner slide-casino-theme active">
+              <div class="slide-content-wrapper">
+                <span class="slide-category-tag live"><i class="fa-solid fa-dice"></i> 24/7 Live Tables</span>
+                <div class="hero-super-title">Real Live Dealer Tables</div>
+                <h2 class="hero-main-title">LIVE CASINO ID</h2>
+                <div class="hero-sub-title">Lightning Roulette, Speed Baccarat, Infinite Blackjack &amp; Dragon Tiger</div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>1000+ HD Live Tables • Real Human Dealers 24/7</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Evolution &amp; Ezugi Tables</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Hindi Speaking Dealers</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> High Roller VIP Stakes</div>
+                </div>
+              </div>
+              <div class="slide-visual-graphic">
+                <div class="graphic-glow-circle"></div>
+                <i class="fa-solid fa-dice graphic-main-icon"></i>
+              </div>
+            </div>
+            <!-- Slide 2: Casino Interactive ID Slide -->
+            <div class="slider-slide slide-themed slide-casino-theme">
+              <div class="slide-content-wrapper">
+                <div class="crown-badge-wrapper">
+                  <i class="fa-solid fa-crown crown-icon"></i>
+                </div>
+                <div class="hero-super-title">Get Your Official</div>
+                <h2 class="hero-main-title">ANNABOOK CASINO ID</h2>
+                <div class="hero-sub-title">VIP High-Roller Casino Account with Unlimited Table Limits</div>
+                <div class="hero-stats-row">
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-dice hero-stat-icon"></i>
+                    <div class="hero-stat-title">500+</div>
+                    <div class="hero-stat-subtitle">TABLES</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-user-tie hero-stat-icon"></i>
+                    <div class="hero-stat-title">LIVE</div>
+                    <div class="hero-stat-subtitle">DEALERS</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-shield-halved hero-stat-icon"></i>
+                    <div class="hero-stat-title">MIN BET</div>
+                    <div class="hero-stat-subtitle">₹50</div>
+                  </div>
+                </div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Ultra-Fast Video Streaming • Certified Fair Gaming</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Zero Lag HD Streaming</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Instant Table Switch</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> 24/7 Fast Cashout</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== 11. TEEN PATTI ==================== -->
+          <div class="category-slide-group" data-category="teenpatti">
+            <!-- Slide 1: Teen Patti Visual Banner -->
+            <div class="slider-slide slide-visual-banner slide-teenpatti-theme active">
+              <div class="slide-content-wrapper">
+                <span class="slide-category-tag hot"><i class="fa-solid fa-clone"></i> Desi Card Gaming</span>
+                <div class="hero-super-title">Royal 3 Patti &amp; Andar Bahar</div>
+                <h2 class="hero-main-title">TEEN PATTI BETTING ID</h2>
+                <div class="hero-sub-title">Classic Teen Patti, Muflis, AK47, Joker &amp; Live Andar Bahar</div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Private VIP Tables • Direct Dealer Interaction • Fast Rounds</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> 100% Real Players</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> 30-Second Fast Rounds</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Instant Auto-Settle</div>
+                </div>
+              </div>
+              <div class="slide-visual-graphic">
+                <div class="graphic-glow-circle"></div>
+                <i class="fa-solid fa-clone graphic-main-icon"></i>
+              </div>
+            </div>
+            <!-- Slide 2: Teen Patti Interactive ID Slide -->
+            <div class="slider-slide slide-themed slide-teenpatti-theme">
+              <div class="slide-content-wrapper">
+                <div class="crown-badge-wrapper">
+                  <i class="fa-solid fa-crown crown-icon"></i>
+                </div>
+                <div class="hero-super-title">Get Your Official</div>
+                <h2 class="hero-main-title">ANNABOOK TEEN PATTI ID</h2>
+                <div class="hero-sub-title">Play Real-Money Teen Patti with 100% Genuine Players &amp; No Bots</div>
+                <div class="hero-stats-row">
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-shield-halved hero-stat-icon"></i>
+                    <div class="hero-stat-title">NO BOT</div>
+                    <div class="hero-stat-subtitle">TABLES</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-bolt hero-stat-icon"></i>
+                    <div class="hero-stat-title">INSTANT</div>
+                    <div class="hero-stat-subtitle">DEPOSIT</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-coins hero-stat-icon"></i>
+                    <div class="hero-stat-title">MIN BET</div>
+                    <div class="hero-stat-subtitle">₹20</div>
+                  </div>
+                </div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>India's Most Trusted Traditional Card Gaming ID</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Hindi Speaking Dealers</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Quick Cashout</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Dedicated VIP Host</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== 12. TENNIS ==================== -->
+          <div class="category-slide-group" data-category="tennis">
+            <!-- Slide 1: Tennis Visual Banner -->
+            <div class="slider-slide slide-visual-banner slide-tennis-theme active">
+              <div class="slide-content-wrapper">
+                <span class="slide-category-tag live"><i class="fa-solid fa-table-tennis-paddle-ball"></i> Grand Slam &amp; ATP</span>
+                <div class="hero-super-title">Centre Court Live Exchange</div>
+                <h2 class="hero-main-title">TENNIS BETTING ID</h2>
+                <div class="hero-sub-title">Wimbledon, Roland Garros, US Open &amp; Australian Open Live Odds</div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Game-by-Game, Set Winner, Tie-Break &amp; Ace Counts</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> ATP &amp; WTA In-Play</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Point-by-Point Markets</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Real-Time Serve Velocity</div>
+                </div>
+              </div>
+              <div class="slide-visual-graphic">
+                <div class="graphic-glow-circle"></div>
+                <i class="fa-solid fa-baseball-bat-ball graphic-main-icon"></i>
+              </div>
+            </div>
+            <!-- Slide 2: Tennis Interactive ID Slide -->
+            <div class="slider-slide slide-themed slide-tennis-theme">
+              <div class="slide-content-wrapper">
+                <div class="crown-badge-wrapper">
+                  <i class="fa-solid fa-crown crown-icon"></i>
+                </div>
+                <div class="hero-super-title">Get Your Official</div>
+                <h2 class="hero-main-title">ANNABOOK TENNIS ID</h2>
+                <div class="hero-sub-title">Point-by-Point In-Play Betting on Men's &amp; Women's World Tours</div>
+                <div class="hero-stats-row">
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-trophy hero-stat-icon"></i>
+                    <div class="hero-stat-title">ALL SLAMS</div>
+                    <div class="hero-stat-subtitle">LIVE</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-bolt hero-stat-icon"></i>
+                    <div class="hero-stat-title">POINT-BY</div>
+                    <div class="hero-stat-subtitle">POINT</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-shield-halved hero-stat-icon"></i>
+                    <div class="hero-stat-title">MIN ID</div>
+                    <div class="hero-stat-subtitle">100</div>
+                  </div>
+                </div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Instant Match Settle • High Liquidity Tennis Markets</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Live Score Updates</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Cashout During Tie-Breaks</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> 24/7 Dedicated Support</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== 13. HORSE RACING ==================== -->
+          <div class="category-slide-group" data-category="horse">
+            <!-- Slide 1: Horse Racing Visual Banner -->
+            <div class="slider-slide slide-visual-banner slide-horse-theme active">
+              <div class="slide-content-wrapper">
+                <span class="slide-category-tag hot"><i class="fa-solid fa-horse-head"></i> Royal Ascot &amp; Indian Turf</span>
+                <div class="hero-super-title">The Sport of Kings</div>
+                <h2 class="hero-main-title">HORSE RACING ID</h2>
+                <div class="hero-sub-title">Mumbai, Bangalore, Pune, Kolkata, Hyderabad &amp; UK Derby Races</div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Win, Place, Forecast &amp; Quinella Live Pool Betting</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> All Turf Clubs Covered</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Official Track Dividends</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Fast Auto Settlement</div>
+                </div>
+              </div>
+              <div class="slide-visual-graphic">
+                <div class="graphic-glow-circle"></div>
+                <i class="fa-solid fa-horse-head graphic-main-icon"></i>
+              </div>
+            </div>
+            <!-- Slide 2: Horse Racing Interactive ID Slide -->
+            <div class="slider-slide slide-themed slide-horse-theme">
+              <div class="slide-content-wrapper">
+                <div class="crown-badge-wrapper">
+                  <i class="fa-solid fa-crown crown-icon"></i>
+                </div>
+                <div class="hero-super-title">Get Your Official</div>
+                <h2 class="hero-main-title">ANNABOOK RACING ID</h2>
+                <div class="hero-sub-title">Daily Race Cards, Jockey Stats &amp; Direct Track Dividend Returns</div>
+                <div class="hero-stats-row">
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-horse-head hero-stat-icon"></i>
+                    <div class="hero-stat-title">ALL TURF</div>
+                    <div class="hero-stat-subtitle">TRACKS</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-coins hero-stat-icon"></i>
+                    <div class="hero-stat-title">WIN &amp;</div>
+                    <div class="hero-stat-subtitle">PLACE</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-shield-halved hero-stat-icon"></i>
+                    <div class="hero-stat-title">MIN BET</div>
+                    <div class="hero-stat-subtitle">₹50</div>
+                  </div>
+                </div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Zero Deductions on Winnings • Instant Cashout</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Live Track Audio &amp; Feeds</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Official Race Results</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> VIP Racing Helpline</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== 14. TABLE TENNIS ==================== -->
+          <div class="category-slide-group" data-category="tabletennis">
+            <!-- Slide 1: Table Tennis Visual Banner -->
+            <div class="slider-slide slide-visual-banner slide-tabletennis-theme active">
+              <div class="slide-content-wrapper">
+                <span class="slide-category-tag live"><i class="fa-solid fa-volleyball"></i> WTT &amp; Liga Pro</span>
+                <div class="hero-super-title">Ultra Fast Table Action</div>
+                <h2 class="hero-main-title">TABLE TENNIS ID</h2>
+                <div class="hero-sub-title">Moscow Liga Pro, Czech TT Cup, WTT Contender &amp; World Tour</div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Non-Stop Matches Every 15 Minutes • Set &amp; Point Handicap</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> 24/7 Continuous Matches</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Point-by-Point Live Rates</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> 3-Min Superfast Cashout</div>
+                </div>
+              </div>
+              <div class="slide-visual-graphic">
+                <div class="graphic-glow-circle"></div>
+                <i class="fa-solid fa-table-tennis-paddle-ball graphic-main-icon"></i>
+              </div>
+            </div>
+            <!-- Slide 2: Table Tennis Interactive ID Slide -->
+            <div class="slider-slide slide-themed slide-tabletennis-theme">
+              <div class="slide-content-wrapper">
+                <div class="crown-badge-wrapper">
+                  <i class="fa-solid fa-crown crown-icon"></i>
+                </div>
+                <div class="hero-super-title">Get Your Official</div>
+                <h2 class="hero-main-title">ANNABOOK TT ID</h2>
+                <div class="hero-sub-title">Fast Settle Betting with 24-Hour Non-Stop Table Tennis Matches</div>
+                <div class="hero-stats-row">
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-clock hero-stat-icon"></i>
+                    <div class="hero-stat-title">24/7</div>
+                    <div class="hero-stat-subtitle">ROUNDS</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-bolt hero-stat-icon"></i>
+                    <div class="hero-stat-title">SET</div>
+                    <div class="hero-stat-subtitle">BETTING</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-shield-halved hero-stat-icon"></i>
+                    <div class="hero-stat-title">MIN ID</div>
+                    <div class="hero-stat-subtitle">100</div>
+                  </div>
+                </div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Rapid 3-Minute Cashout • High Win Potential</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Continuous In-Play Feed</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Live Point Tracking</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> 100% Verified Accounts</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== 15. GREYHOUNDS ==================== -->
+          <div class="category-slide-group" data-category="greyhounds">
+            <!-- Slide 1: Greyhounds Visual Banner -->
+            <div class="slider-slide slide-visual-banner slide-greyhounds-theme active">
+              <div class="slide-content-wrapper">
+                <span class="slide-category-tag hot"><i class="fa-solid fa-dog"></i> UK &amp; Australian Derby</span>
+                <div class="hero-super-title">Night Track Greyhound Racing</div>
+                <h2 class="hero-main-title">GREYHOUNDS ID</h2>
+                <div class="hero-sub-title">Romford, Crayford, Sheffield, Angle Park &amp; Wentworth Park</div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Trap Winner, Quinella, Trifecta &amp; Top 2 Finish Bets</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> New Race Every 5 Minutes</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> High Payout Multipliers</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Direct Trap Odds</div>
+                </div>
+              </div>
+              <div class="slide-visual-graphic">
+                <div class="graphic-glow-circle"></div>
+                <i class="fa-solid fa-dog graphic-main-icon"></i>
+              </div>
+            </div>
+            <!-- Slide 2: Greyhounds Interactive ID Slide -->
+            <div class="slider-slide slide-themed slide-greyhounds-theme">
+              <div class="slide-content-wrapper">
+                <div class="crown-badge-wrapper">
+                  <i class="fa-solid fa-crown crown-icon"></i>
+                </div>
+                <div class="hero-super-title">Get Your Official</div>
+                <h2 class="hero-main-title">ANNABOOK HOUNDS ID</h2>
+                <div class="hero-sub-title">Every 5 Minutes a New Race • High Payout Guarantee On Trap Bets</div>
+                <div class="hero-stats-row">
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-stopwatch hero-stat-icon"></i>
+                    <div class="hero-stat-title">RACES</div>
+                    <div class="hero-stat-subtitle">EVERY 5M</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-trophy hero-stat-icon"></i>
+                    <div class="hero-stat-title">TRAP</div>
+                    <div class="hero-stat-subtitle">WINNER</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-shield-halved hero-stat-icon"></i>
+                    <div class="hero-stat-title">MIN ID</div>
+                    <div class="hero-stat-subtitle">100</div>
+                  </div>
+                </div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Official International Track Feeds &amp; Accurate Settle</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Live Race Card &amp; Traps</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Instant Winnings Credited</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> 24/7 Dedicated Support</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== 16. ESPORTS ==================== -->
+          <div class="category-slide-group" data-category="esports">
+            <!-- Slide 1: Esports Visual Banner -->
+            <div class="slider-slide slide-visual-banner slide-esports-theme active">
+              <div class="slide-content-wrapper">
+                <span class="slide-category-tag live"><i class="fa-solid fa-vr-cardboard"></i> Tier-1 Pro Leagues</span>
+                <div class="hero-super-title">Competitive Gaming Exchange</div>
+                <h2 class="hero-main-title">ESPORTS BETTING ID</h2>
+                <div class="hero-sub-title">CS2 Major, Dota 2 The International, Valorant Champions &amp; BGMI</div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Map Winner, First Blood, Pistol Round &amp; Handicap Betting</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Live Twitch &amp; Stream Odds</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> CS2 &amp; Valorant Tournaments</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Instant In-Play Cashout</div>
+                </div>
+              </div>
+              <div class="slide-visual-graphic">
+                <div class="graphic-glow-circle"></div>
+                <i class="fa-solid fa-vr-cardboard graphic-main-icon"></i>
+              </div>
+            </div>
+            <!-- Slide 2: Esports Interactive ID Slide -->
+            <div class="slider-slide slide-themed slide-esports-theme">
+              <div class="slide-content-wrapper">
+                <div class="crown-badge-wrapper">
+                  <i class="fa-solid fa-crown crown-icon"></i>
+                </div>
+                <div class="hero-super-title">Get Your Official</div>
+                <h2 class="hero-main-title">ANNABOOK ESPORTS ID</h2>
+                <div class="hero-sub-title">Bet on Top Global Esports Tournaments with High Liquidity Odds</div>
+                <div class="hero-stats-row">
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-trophy hero-stat-icon"></i>
+                    <div class="hero-stat-title">MAJOR</div>
+                    <div class="hero-stat-subtitle">LEAGUES</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-gamepad hero-stat-icon"></i>
+                    <div class="hero-stat-title">MAP-BY</div>
+                    <div class="hero-stat-subtitle">MAP</div>
+                  </div>
+                  <div class="hero-stat-card">
+                    <i class="fa-solid fa-shield-halved hero-stat-icon"></i>
+                    <div class="hero-stat-title">MIN ID</div>
+                    <div class="hero-stat-subtitle">100</div>
+                  </div>
+                </div>
+                <div class="hero-ribbon-bar">
+                  <span class="slashes">///</span>
+                  <span>Twitch &amp; YouTube Live Sync • Instant Cashout</span>
+                  <span class="slashes">///</span>
+                </div>
+                <div class="hero-features-row">
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Tier 1 Esports Coverage</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Fast Activation</div>
+                  <div class="hero-feature-item"><i class="fa-regular fa-circle-check"></i> Direct Support</div>
                 </div>
               </div>
             </div>
@@ -236,7 +1202,7 @@
           <i class="fa-solid fa-chevron-right"></i>
         </button>
 
-        <!-- Slider Pagination Dots -->
+        <!-- Slider Pagination Dots (Exactly 2 slides displayed at a time) -->
         <div class="slider-pagination-dots">
           <span class="slider-dot active" data-slide="0"></span>
           <span class="slider-dot" data-slide="1"></span>

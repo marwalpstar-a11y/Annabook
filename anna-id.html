@@ -55,7 +55,9 @@
       </nav>
 
       <div class="header-actions">
-        <a href="https://t.me/Anna_Book_Official" target="_blank" rel="noopener noreferrer" class="btn-header-signup">Get Anna ID</a>
+        <button type="button" class="btn-header-login" onclick="openLoginModal()" title="Login to AnnaBook">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+        </button>
         <button class="mobile-nav-toggle" aria-label="Toggle navigation menu">
           <i class="fa-solid fa-bars"></i>
         </button>
@@ -371,6 +373,41 @@
       </div>
     </div>
   </footer>
+
+  <!-- Login Modal -->
+  <div class="modal-backdrop" id="loginModal">
+    <div class="modal-box" style="max-width:440px;">
+      <button class="modal-close-btn modal-close-trigger"><i class="fa-solid fa-xmark"></i></button>
+      <div style="text-align:center; margin-bottom:24px;">
+        <div class="logo-badge" style="display:inline-flex; margin-bottom:14px;">
+          <div class="logo-text-top">
+            <span class="logo-anna">ANNA</span>
+            <span class="logo-book">BOOK</span>
+          </div>
+        </div>
+        <h3 style="font-family:var(--font-heading); font-size:1.6rem; color:#fff;">Welcome to AnnaBook</h3>
+        <p style="font-size:0.88rem; color:var(--text-muted);">Enter your ID credentials to enter the exchange</p>
+      </div>
+
+      <form onsubmit="handleLoginSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Client ID / Username</label>
+          <input type="text" class="form-control" placeholder="e.g. ANNA98210" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn-sidebar-get-id" style="width:100%; margin-top:10px;">
+          Login to Exchange
+        </button>
+      </form>
+
+      <div style="margin-top:20px; text-align:center; font-size:0.85rem; color:var(--text-muted);">
+        Don't have an ID yet? <a href="https://t.me/Anna_Book_Official" target="_blank" rel="noopener noreferrer" style="color:var(--gold-primary); font-weight:700;">Get Instant ID on Telegram</a>
+      </div>
+    </div>
+  </div>
 
   <script src="assets/js/main.js"></script>
   <script>

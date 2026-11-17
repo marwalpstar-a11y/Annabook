@@ -6,34 +6,69 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // --------------------------------------------------------------------------
-  // 1. Hero Image Slider Engine
+  // 1. Dynamic Sports Category Banner & 2-Slide Slider Engine
   // --------------------------------------------------------------------------
   const slider = document.querySelector('.hero-slider-section');
+  const sidebarItems = document.querySelectorAll('.sidebar-scroll-area .sidebar-item');
+
   if (slider) {
-    const slides = slider.querySelectorAll('.slider-slide');
+    const categoryGroups = slider.querySelectorAll('.category-slide-group');
     const dots = slider.querySelectorAll('.slider-dot');
     const prevBtn = slider.querySelector('.slider-prev');
     const nextBtn = slider.querySelector('.slider-next');
-    let currentSlide = 0;
+    let currentCategory = 'cricket';
+    let currentSlideIndex = 0;
     let slideInterval = null;
     const intervalTime = 5500; // 5.5 seconds per slide
 
+    function getActiveGroup() {
+      return slider.querySelector(`.category-slide-group[data-category="${currentCategory}"]`) || categoryGroups[0];
+    }
+
+    function updateSliderView() {
+      const activeGroup = getActiveGroup();
+      if (!activeGroup) return;
+
+      // Ensure only the active category group is visible (remaining hidden)
+      categoryGroups.forEach(group => {
+        if (group === activeGroup) {
+          group.classList.add('active');
+        } else {
+          group.classList.remove('active');
+        }
+      });
+
+      // Exactly 2 slides in the active category: display the selected slide
+      const slides = activeGroup.querySelectorAll('.slider-slide');
+      slides.forEach((slide, idx) => {
+        if (idx === currentSlideIndex) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+
+      // Update the 2 pagination dots
+      dots.forEach((dot, idx) => {
+        if (idx === currentSlideIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
     function goToSlide(index) {
-      slides[currentSlide].classList.remove('active');
-      if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
-
-      currentSlide = (index + slides.length) % slides.length;
-
-      slides[currentSlide].classList.add('active');
-      if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+      currentSlideIndex = (index + 2) % 2;
+      updateSliderView();
     }
 
     function nextSlide() {
-      goToSlide(currentSlide + 1);
+      goToSlide(currentSlideIndex + 1);
     }
 
     function prevSlide() {
-      goToSlide(currentSlide - 1);
+      goToSlide(currentSlideIndex - 1);
     }
 
     function startAutoSlide() {
@@ -48,7 +83,44 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Event Listeners for Controls
+    function switchCategory(categoryName) {
+      if (!categoryName) return;
+      currentCategory = categoryName;
+      currentSlideIndex = 0; // reset to slide 1 of chosen category
+
+      // Highlight active sidebar item
+      sidebarItems.forEach(item => {
+        if (item.getAttribute('data-category') === categoryName) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+
+      updateSliderView();
+      startAutoSlide();
+    }
+
+    // Sidebar Category Click Listeners
+    sidebarItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        const cat = item.getAttribute('data-category');
+        if (cat) {
+          e.preventDefault();
+          switchCategory(cat);
+
+          // On mobile & tablet, keep slider visible
+          if (window.innerWidth <= 992) {
+            const rect = slider.getBoundingClientRect();
+            if (rect.top < 0 || rect.bottom > window.innerHeight) {
+              slider.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+          }
+        }
+      });
+    });
+
+    // Arrow Controls
     if (nextBtn) {
       nextBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -65,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    // Pagination Dots (Exactly 2 dots for the 2 slides of active category)
     dots.forEach((dot, idx) => {
       dot.addEventListener('click', () => {
         goToSlide(idx);
@@ -78,11 +151,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Keyboard Navigation
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') nextSlide();
-      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') {
+        nextSlide();
+        startAutoSlide();
+      }
+      if (e.key === 'ArrowLeft') {
+        prevSlide();
+        startAutoSlide();
+      }
     });
 
-    // Touch Swipe Gestures
+    // Touch Swipe Gestures for Mobile
     let touchStartX = 0;
     let touchEndX = 0;
 
@@ -92,15 +171,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     slider.addEventListener('touchend', (e) => {
       touchEndX = e.changedTouches[0].screenX;
-      if (touchStartX - touchEndX > 50) {
+      if (touchStartX - touchEndX > 45) {
         nextSlide();
         startAutoSlide();
-      } else if (touchEndX - touchStartX > 50) {
+      } else if (touchEndX - touchStartX > 45) {
         prevSlide();
         startAutoSlide();
       }
     }, { passive: true });
 
+    // Initial setup
+    updateSliderView();
     startAutoSlide();
   }
 
@@ -156,15 +237,27 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --------------------------------------------------------------------------
-  // 3. Left Sidebar Sports Categories Interaction
+  // 3. Global Login Modal Handlers
   // --------------------------------------------------------------------------
-  const sidebarItems = document.querySelectorAll('.sidebar-item');
-  sidebarItems.forEach((item) => {
-    item.addEventListener('click', (e) => {
-      sidebarItems.forEach((el) => el.classList.remove('active'));
-      item.classList.add('active');
-    });
-  });
+  window.openLoginModal = function() {
+    const modal = document.getElementById('loginModal');
+    if (modal) {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        const input = modal.querySelector('input');
+        if (input) input.focus();
+      }, 100);
+    } else {
+      showToast('Please connect with your account manager on Telegram @Anna_Book_Official to access the exchange.');
+    }
+  };
+
+  window.handleLoginSubmit = function(e) {
+    if (e) e.preventDefault();
+    alert('Login demonstration: Please connect with your account manager on Telegram @Anna_Book_Official to access the live exchange server.');
+    closeAllModals();
+  };
 
   // --------------------------------------------------------------------------
   // 4. Header Scroll Effect & Mobile Nav Menu
@@ -360,6 +453,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Expose for inline handlers if needed
   window.openWhatsAppNoticeModal = openWhatsAppNoticeModal;
+  window.openLoginModal = openLoginModal;
+  window.handleLoginSubmit = handleLoginSubmit;
   window.closeAllModals = closeAllModals;
   window.showToast = showToast;
 });
