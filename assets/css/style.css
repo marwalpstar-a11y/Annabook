@@ -1248,6 +1248,12 @@ button, input, select, textarea {
   filter: drop-shadow(0 0 6px var(--gold-primary));
 }
 
+/* Non-Cricket categories show a single static banner: hide arrows and dots */
+.hero-slider-section.is-static .slider-arrow-btn,
+.hero-slider-section.is-static .slider-pagination-dots {
+  display: none !important;
+}
+
 /* Slider Controls (Arrows & Pagination Dots) */
 .slider-arrow-btn {
   position: absolute;
@@ -2637,7 +2643,7 @@ button, input, select, textarea {
     width: 100% !important;
     max-width: 100% !important;
     position: relative !important;
-    padding-bottom: 78px !important; /* Space for the bottom floating dock so nothing overlaps */
+    padding-bottom: 96px !important; /* Space for the bottom floating dock so nothing overlaps */
   }
 
   *, *::before, *::after {
@@ -2688,7 +2694,7 @@ button, input, select, textarea {
     font-size: 1.05rem !important;
   }
 
-  /* Main Layout Ordering: Hero banner FIRST, Sidebar categories SECOND, Live Matches THIRD */
+  /* Main Layout Ordering: Sidebar categories FIRST, Hero slider HIDDEN on mobile */
   .main-layout-container {
     display: flex !important;
     flex-direction: column !important;
@@ -2705,42 +2711,50 @@ button, input, select, textarea {
     display: contents !important;
   }
 
+  /* Mobile: Completely HIDE/REMOVE the Hero Section slider and all rotating banner images */
   .hero-slider-section {
-    order: 1 !important;
-    width: 100% !important;
+    display: none !important;
   }
 
+  /* Mobile: Full-width Sports & Casino Section at the top */
   .left-sidebar {
-    order: 2 !important;
+    order: 1 !important;
     width: 100% !important;
-    min-width: 0 !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
     position: static !important;
     max-height: none !important;
-    margin: 0 !important;
+    margin: 0 0 16px !important;
+    border-radius: 16px !important;
+    border: 1.5px solid rgba(245, 166, 35, 0.35) !important;
+    background: rgba(8, 12, 22, 0.96) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
   }
 
   #sports-cricket {
-    order: 3 !important;
+    order: 2 !important;
     width: 100% !important;
   }
 
   .main-content-flow > .section-block:nth-of-type(2) {
-    order: 4 !important;
+    order: 3 !important;
     width: 100% !important;
   }
 
   #blog-section {
-    order: 5 !important;
+    order: 4 !important;
     width: 100% !important;
   }
 
   .main-content-flow > .section-block:nth-of-type(4) {
-    order: 6 !important;
+    order: 5 !important;
     width: 100% !important;
   }
 
   .main-content-flow > .section-block:nth-of-type(5) {
-    order: 7 !important;
+    order: 6 !important;
     width: 100% !important;
   }
 
@@ -2749,208 +2763,125 @@ button, input, select, textarea {
     order: 10;
   }
 
+  /* Mobile Sports & Casino Sidebar Content Styling */
   .sidebar-header {
-    padding: 10px 12px !important;
+    padding: 13px 16px !important;
+    background: linear-gradient(90deg, rgba(245, 166, 35, 0.12) 0%, rgba(8, 12, 22, 0.8) 100%) !important;
+    border-bottom: 1px solid rgba(245, 166, 35, 0.25) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
   }
 
   .sidebar-title {
-    font-size: 0.95rem !important;
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+  }
+
+  .sidebar-title i {
+    color: var(--gold-primary) !important;
   }
 
   .sidebar-scroll-area {
-    max-height: 190px !important;
-    padding: 8px 10px !important;
+    max-height: 400px !important;
+    padding: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: thin !important;
   }
 
   .sidebar-item {
-    padding: 7px 10px !important;
-    font-size: 0.85rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    min-height: 48px !important;
+    padding: 11px 14px !important;
+    font-size: 0.94rem !important;
+    border-radius: 10px !important;
+    background: rgba(255, 255, 255, 0.035) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-sizing: border-box !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+  }
+
+  .sidebar-item:active,
+  .sidebar-item.active {
+    background: linear-gradient(90deg, rgba(245, 166, 35, 0.22) 0%, rgba(245, 166, 35, 0.06) 100%) !important;
+    border: 1px solid rgba(245, 166, 35, 0.5) !important;
+    border-left: 4px solid var(--gold-primary) !important;
+    box-shadow: 0 4px 15px rgba(245, 166, 35, 0.15) !important;
+  }
+
+  .sidebar-item-icon {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    font-size: 1.1rem !important;
+    color: var(--gold-light) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 12px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .sidebar-item-name {
+    flex: 1 1 auto !important;
+    font-size: 0.94rem !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    letter-spacing: 0.2px !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+  }
+
+  .sidebar-badge {
+    flex-shrink: 0 !important;
+    font-size: 0.7rem !important;
+    font-weight: 800 !important;
+    padding: 3px 8px !important;
+    border-radius: 6px !important;
+    margin-left: 10px !important;
   }
 
   .sidebar-fixed-bottom {
-    padding: 10px !important;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+    background: rgba(6, 9, 16, 0.98) !important;
+    border-top: 1px solid rgba(245, 166, 35, 0.25) !important;
+  }
+
+  .btn-sidebar-get-id {
+    height: 46px !important;
+    padding: 0 16px !important;
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     gap: 8px !important;
   }
 
-  .sidebar-fixed-bottom .btn-sidebar-id,
-  .sidebar-fixed-bottom .btn-sidebar-login {
-    padding: 10px 12px !important;
-    font-size: 0.85rem !important;
-  }
-
-  /* Hero Slider Section */
-  .hero-slider-section {
-    aspect-ratio: auto !important;
-    height: auto !important;
-    min-height: 250px !important;
-    border-radius: 14px !important;
-    border-width: 1.5px !important;
-    position: relative !important;
-    overflow: hidden !important;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8) !important;
-  }
-
-  .slider-container {
-    position: relative !important;
-    width: 100% !important;
-    min-height: 250px !important;
-  }
-
-  .slider-slide {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-  }
-
-  .slider-slide.slide-cricket {
+  .btn-sidebar-login {
+    height: 44px !important;
+    padding: 0 16px !important;
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-  }
-
-  .slider-banner-img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    display: block !important;
-  }
-
-  .slide-football,
-  .slide-themed,
-  .slide-visual-banner {
-    padding: 14px 12px 28px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    text-align: center !important;
-  }
-
-  .slide-visual-graphic {
-    display: none !important;
-  }
-
-  .slide-category-tag {
-    font-size: 0.65rem !important;
-    padding: 2px 8px !important;
-    margin-bottom: 2px !important;
-  }
-
-  .slide-content-wrapper {
-    max-width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    gap: 3px !important;
-  }
-
-  .crown-badge-wrapper {
-    margin-bottom: 2px !important;
-  }
-
-  .crown-icon {
-    font-size: 1.3rem !important;
-  }
-
-  .hero-super-title {
-    font-size: 0.78rem !important;
-    letter-spacing: 0.5px !important;
-  }
-
-  .hero-main-title {
-    font-size: 1.45rem !important;
-    letter-spacing: 1px !important;
-    line-height: 1.1 !important;
-    margin: 2px 0 !important;
-  }
-
-  .hero-sub-title {
-    font-size: 0.7rem !important;
-    margin-bottom: 4px !important;
-  }
-
-  .hero-stats-row {
-    display: flex !important;
-    justify-content: center !important;
-    gap: 4px !important;
-    width: 100% !important;
-    margin: 3px 0 !important;
-    flex-wrap: nowrap !important;
-  }
-
-  .hero-stat-card {
-    flex: 1 1 0 !important;
-    min-width: 0 !important;
-    padding: 4px 3px !important;
-    border-radius: 8px !important;
-  }
-
-  .hero-stat-icon {
-    font-size: 0.82rem !important;
-    margin-bottom: 1px !important;
-  }
-
-  .hero-stat-title {
-    font-size: 0.68rem !important;
-    font-weight: 800 !important;
-  }
-
-  .hero-stat-subtitle {
-    font-size: 0.52rem !important;
-    letter-spacing: 0.2px !important;
-  }
-
-  .hero-ribbon-bar {
-    padding: 4px 6px !important;
-    font-size: 0.66rem !important;
-    margin: 4px 0 !important;
-    border-radius: 6px !important;
-    width: 100% !important;
-    white-space: normal !important;
-    text-align: center !important;
-  }
-
-  .hero-features-list {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 6px !important;
-    font-size: 0.6rem !important;
-  }
-
-  .slider-arrow-btn {
-    width: 28px !important;
-    height: 28px !important;
-    font-size: 0.75rem !important;
-    background: rgba(7, 10, 18, 0.75) !important;
-    opacity: 0.8 !important;
-    z-index: 12 !important;
-  }
-
-  .slider-prev {
-    left: 6px !important;
-  }
-
-  .slider-next {
-    right: 6px !important;
-  }
-
-  .slider-pagination-dots {
-    bottom: 5px !important;
-    padding: 2px 8px !important;
-    gap: 6px !important;
-    z-index: 12 !important;
-  }
-
-  .slider-dot {
-    width: 6px !important;
-    height: 6px !important;
-  }
-
-  .slider-dot.active {
-    width: 16px !important;
+    gap: 8px !important;
   }
 
   /* Section Headers & Typography */
@@ -3035,19 +2966,19 @@ button, input, select, textarea {
     box-sizing: border-box !important;
   }
 
-  /* WhatsApp & Telegram Floating Buttons: 100% responsive, equal 50%/50% width, non-overlapping */
+  /* WhatsApp & Telegram Floating Buttons - Redesigned, Bigger, Visible, Animated */
   .bottom-floating-dock {
     position: fixed !important;
-    bottom: 8px !important;
-    left: 8px !important;
-    right: 8px !important;
-    width: calc(100% - 16px) !important;
+    bottom: 12px !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: calc(100% - 24px) !important;
     max-width: 100% !important;
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: space-between !important;
-    gap: 8px !important;
+    gap: 12px !important;
     z-index: 9999 !important;
     padding: 0 !important;
     margin: 0 !important;
@@ -3058,11 +2989,11 @@ button, input, select, textarea {
   .dock-pill-btn {
     flex: 1 1 0 !important;
     width: 50% !important;
-    max-width: calc(50% - 4px) !important;
+    max-width: calc(50% - 6px) !important;
     min-width: 0 !important;
-    height: 48px !important;
-    padding: 4px 8px !important;
-    gap: 6px !important;
+    height: 56px !important;
+    padding: 6px 12px !important;
+    gap: 10px !important;
     box-sizing: border-box !important;
     border-radius: 999px !important;
     display: flex !important;
@@ -3071,25 +3002,64 @@ button, input, select, textarea {
     overflow: hidden !important;
     text-decoration: none !important;
     margin: 0 !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+  }
+
+  .dock-pill-btn.whatsapp-pill {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
+    border: 2px solid rgba(255, 255, 255, 0.45) !important;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
+    animation: pulseFloatWhatsApp 3.2s ease-in-out infinite !important;
+  }
+
+  .dock-pill-btn.telegram-pill {
+    background: linear-gradient(135deg, #0088cc 0%, #005580 100%) !important;
+    border: 2px solid rgba(255, 255, 255, 0.45) !important;
+    box-shadow: 0 8px 24px rgba(0, 136, 204, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
+    animation: pulseFloatTelegram 3.2s ease-in-out infinite 1.6s !important;
+  }
+
+  @keyframes pulseFloatWhatsApp {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+    }
+    50% {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(37, 211, 102, 0.7);
+    }
+  }
+
+  @keyframes pulseFloatTelegram {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+      box-shadow: 0 8px 24px rgba(0, 136, 204, 0.45);
+    }
+    50% {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(0, 136, 204, 0.7);
+    }
   }
 
   .dock-pill-icon {
-    width: 32px !important;
-    height: 32px !important;
-    min-width: 32px !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
     border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.22) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     flex-shrink: 0 !important;
+    color: #ffffff !important;
   }
 
   .dock-pill-btn.whatsapp-pill .dock-pill-icon {
-    font-size: 1.45rem !important;
+    font-size: 1.6rem !important;
   }
 
   .dock-pill-btn.telegram-pill .dock-pill-icon {
-    font-size: 1.15rem !important;
+    font-size: 1.35rem !important;
   }
 
   .dock-pill-text {
@@ -3098,22 +3068,25 @@ button, input, select, textarea {
     display: flex !important;
     flex-direction: column !important;
     text-align: left !important;
+    justify-content: center !important;
     overflow: hidden !important;
   }
 
   .dock-pill-title {
-    font-size: 0.72rem !important;
+    font-size: 0.82rem !important;
     line-height: 1.15 !important;
     font-weight: 800 !important;
+    color: #ffffff !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
   }
 
   .dock-pill-sub {
-    font-size: 0.58rem !important;
-    line-height: 1.1 !important;
-    opacity: 0.9 !important;
+    font-size: 0.65rem !important;
+    line-height: 1.15 !important;
+    font-weight: 600 !important;
+    color: rgba(255, 255, 255, 0.95) !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
@@ -3126,9 +3099,9 @@ button, input, select, textarea {
     border-radius: 14px !important;
   }
 
-  /* Footer on mobile */
+  /* Footer on mobile - generous padding so floating buttons NEVER cover footer text */
   .site-footer {
-    padding: 35px 0 95px !important; /* 95px bottom padding ensures floating buttons NEVER cover footer text */
+    padding: 35px 0 120px !important;
     margin-top: 35px !important;
   }
 
@@ -3160,27 +3133,41 @@ button, input, select, textarea {
     width: 118px !important;
   }
 
+  .dock-pill-btn {
+    height: 52px !important;
+    padding: 4px 8px !important;
+    gap: 7px !important;
+  }
+
+  .dock-pill-icon {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+  }
+
+  .dock-pill-btn.whatsapp-pill .dock-pill-icon {
+    font-size: 1.45rem !important;
+  }
+
+  .dock-pill-btn.telegram-pill .dock-pill-icon {
+    font-size: 1.2rem !important;
+  }
+
   .dock-pill-title {
-    font-size: 0.65rem !important;
+    font-size: 0.74rem !important;
   }
 
   .dock-pill-sub {
-    font-size: 0.52rem !important;
+    font-size: 0.58rem !important;
   }
 
-  .hero-main-title {
-    font-size: 1.35rem !important;
+  .sidebar-scroll-area {
+    max-height: 340px !important;
   }
 
-  .hero-stat-card {
-    padding: 3px 2px !important;
-  }
-
-  .hero-stat-title {
-    font-size: 0.62rem !important;
-  }
-
-  .hero-stat-subtitle {
-    font-size: 0.48rem !important;
+  .sidebar-item {
+    padding: 9px 12px !important;
+    min-height: 44px !important;
+    font-size: 0.88rem !important;
   }
 }

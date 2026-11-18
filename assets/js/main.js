@@ -29,6 +29,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const activeGroup = getActiveGroup();
       if (!activeGroup) return;
 
+      const isCricket = (currentCategory === 'cricket');
+
+      // Website: Only Cricket has a working image slider at the top.
+      // All other categories display a single static banner image (no rotating slider, no arrows, no dots).
+      if (isCricket) {
+        slider.classList.remove('is-static');
+      } else {
+        slider.classList.add('is-static');
+      }
+
       // Ensure only the active category group is visible (remaining hidden)
       categoryGroups.forEach(group => {
         if (group === activeGroup) {
@@ -38,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // Exactly 2 slides in the active category: display the selected slide
+      // Manage slides in active category
       const slides = activeGroup.querySelectorAll('.slider-slide');
       slides.forEach((slide, idx) => {
         if (idx === currentSlideIndex) {
@@ -48,32 +58,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // Update the 2 pagination dots
-      dots.forEach((dot, idx) => {
-        if (idx === currentSlideIndex) {
-          dot.classList.add('active');
-        } else {
-          dot.classList.remove('active');
-        }
-      });
+      // Update the 2 pagination dots for Cricket
+      if (isCricket) {
+        dots.forEach((dot, idx) => {
+          if (idx === currentSlideIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
     }
 
     function goToSlide(index) {
-      currentSlideIndex = (index + 2) % 2;
+      if (currentCategory !== 'cricket') {
+        currentSlideIndex = 0;
+      } else {
+        currentSlideIndex = (index + 2) % 2;
+      }
       updateSliderView();
     }
 
     function nextSlide() {
+      if (currentCategory !== 'cricket') return;
       goToSlide(currentSlideIndex + 1);
     }
 
     function prevSlide() {
+      if (currentCategory !== 'cricket') return;
       goToSlide(currentSlideIndex - 1);
     }
 
     function startAutoSlide() {
       stopAutoSlide();
-      slideInterval = setInterval(nextSlide, intervalTime);
+      // Only Cricket category has multiple rotating slides
+      if (currentCategory === 'cricket') {
+        slideInterval = setInterval(nextSlide, intervalTime);
+      }
     }
 
     function stopAutoSlide() {
@@ -98,24 +119,31 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       updateSliderView();
-      startAutoSlide();
+      if (currentCategory === 'cricket') {
+        startAutoSlide();
+      } else {
+        stopAutoSlide();
+      }
     }
 
     // Sidebar Category Click Listeners
     sidebarItems.forEach(item => {
       item.addEventListener('click', (e) => {
+        // MOBILE VIEW (<= 768px):
+        // Make all sports category items clickable, but do not trigger or display any content on click yet.
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          sidebarItems.forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+          return;
+        }
+
+        // DESKTOP / WEB VIEW (> 768px):
+        // Dynamically update the banner image, heading, text, highlights, and content according to that selected category.
         const cat = item.getAttribute('data-category');
         if (cat) {
           e.preventDefault();
           switchCategory(cat);
-
-          // On mobile & tablet, keep slider visible
-          if (window.innerWidth <= 992) {
-            const rect = slider.getBoundingClientRect();
-            if (rect.top < 0 || rect.bottom > window.innerHeight) {
-              slider.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-          }
         }
       });
     });
