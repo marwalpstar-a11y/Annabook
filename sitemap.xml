@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- 1. Home Page / Live Exchange -->
+  <url>
+    <loc>https://x1bet.ink/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://x1bet.ink/og-image.png</image:loc>
+      <image:title>AnnaBook Official - Premium Sports ID Provider</image:title>
+      <image:caption>Get your official verified AnnaBook ID from India's #1 trusted exchange provider</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://x1bet.ink/assets/images/hero-cricket.jpg</image:loc>
+      <image:title>AnnaBook Cricket ID Exchange</image:title>
+      <image:caption>Verified Cricket Betting ID with 24-hour service and instant withdrawal</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://x1bet.ink/assets/images/hero-football.jpg</image:loc>
+      <image:title>AnnaBook Football Betting ID</image:title>
+      <image:caption>Premier League, Champions League and World Cup Live Rates</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 2. Get Anna ID Page -->
+  <url>
+    <loc>https://x1bet.ink/anna-id.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://x1bet.ink/assets/images/hero-cricket.jpg</image:loc>
+      <image:title>Get Your Verified AnnaBook ID</image:title>
+      <image:caption>Fast 2-minute activation, 10% welcome bonus, minimum ₹100 deposit</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 3. Our Services Page -->
+  <url>
+    <loc>https://x1bet.ink/services.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://x1bet.ink/assets/images/hero-cricket.jpg</image:loc>
+      <image:title>AnnaBook Sports and Casino Services</image:title>
+      <image:caption>Cricket ID, Football, Live Casino, Slots and VIP Master IDs</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 4. Blog & Match Insights Page -->
+  <url>
+    <loc>https://x1bet.ink/blog.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://x1bet.ink/assets/images/blog-cricket.jpg</image:loc>
+      <image:title>Cricket Betting Tips and Predictions</image:title>
+      <image:caption>Expert strategies and match insights for cricket exchanges</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://x1bet.ink/assets/images/blog-ipl.jpg</image:loc>
+      <image:title>IPL 2026 Season Analysis and Rates</image:title>
+      <image:caption>In-depth coverage and high odds for TATA IPL 2026</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://x1bet.ink/assets/images/blog-football.jpg</image:loc>
+      <image:title>Football Trading Strategies</image:title>
+      <image:caption>Guide to European football odds and live market cashouts</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://x1bet.ink/assets/images/blog-security.jpg</image:loc>
+      <image:title>Betting Account Safety and Security</image:title>
+      <image:caption>Best practices for password protection and safe payouts</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 5. About Us Page -->
+  <url>
+    <loc>https://x1bet.ink/about.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://x1bet.ink/assets/images/logo-base-clean.png</image:loc>
+      <image:title>About AnnaBook Official Network</image:title>
+      <image:caption>India's trusted betting network with 250+ branches</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 6. Contact Us Page -->
+  <url>
+    <loc>https://x1bet.ink/contact.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://x1bet.ink/assets/images/logo-base-clean.png</image:loc>
+      <image:title>Contact AnnaBook Official Support</image:title>
+      <image:caption>24/7 customer service via Telegram and WhatsApp</image:caption>
+    </image:image>
+  </url>
+
+</urlset>

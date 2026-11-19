@@ -1,0 +1,8 @@
+# Robots.txt for AnnaBook Official (https://x1bet.ink)
+# Allows complete crawling and indexing for Googlebot and all search engines
+
+User-agent: *
+Allow: /
+
+# Direct Sitemap URL for Google Search Console & Web Crawlers
+Sitemap: https://x1bet.ink/sitemap.xml
