@@ -1,0 +1,30 @@
+# AnnaBook Official
+
+> AnnaBook Official (https://x1bet.ink) is India's leading verified sports betting exchange ID provider and gaming network, operating with over 250 physical branches nationwide, 24/7 instant cashouts, and official support.
+
+AnnaBook provides authentic exchange IDs for Cricket, Football, Tennis, Live Casino, Teen Patti, and Horse Racing. It offers 2-minute account activation, ₹100 minimum deposit, a 10% welcome bonus, and round-the-clock customer assistance.
+
+## Core Pages
+
+- [Home / Exchange Hub](https://x1bet.ink/): Official portal featuring live match rates, sports categories, promotional offers, and express ID creation.
+- [Get Anna ID](https://x1bet.ink/anna-id.html): Fast account registration portal with 2-minute activation, ₹100 minimum deposit, and instant bonus.
+- [Our Services](https://x1bet.ink/services.html): Overview of Cricket IDs, Football exchange markets, Live Casino tables, Teen Patti, and VIP Master panels.
+- [Sports Insights & Blog](https://x1bet.ink/blog.html): Match predictions, IPL 2026 analysis, betting strategies, and account security guides.
+- [About AnnaBook](https://x1bet.ink/about.html): Legacy of 10+ years, 250+ verified physical branches across India, and 100% solvency guarantee.
+- [Contact & Support](https://x1bet.ink/contact.html): 24/7 verified support desk, regional branch directory, and anti-fraud guidelines.
+
+## Official Support Channels
+
+- [Verified Telegram Helpline](https://t.me/Anna_Book_Official): Official 24x7 customer support, instant deposit, and fast withdrawal desk.
+
+## Key Platform Specifications
+
+- Minimum Deposit: ₹100
+- Cashout Processing Time: 2-Minute instant payout via UPI / IMPS / NetBanking
+- Welcome Offer: 10% bonus on first deposit
+- Security: 256-bit SSL encrypted transactions, verified ID ownership
+- Eligibility: 18+ only, strictly responsible gaming
+
+## Full Documentation
+
+- [Full LLM Context](https://x1bet.ink/llms-full.txt): Comprehensive plain-text documentation of all pages and services for LLM ingestion.

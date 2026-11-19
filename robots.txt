@@ -6,3 +6,7 @@ Allow: /
 
 # Direct Sitemap URL for Google Search Console & Web Crawlers
 Sitemap: https://x1bet.ink/sitemap.xml
+
+# LLM Documentation & Context
+# https://x1bet.ink/llms.txt
+# https://x1bet.ink/llms-full.txt
