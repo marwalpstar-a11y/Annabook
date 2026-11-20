@@ -215,16 +215,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --------------------------------------------------------------------------
   // 2. WhatsApp & Telegram Interactions
-  // (Note: Telegram has official link; WhatsApp currently has no number,
-  // so we display an informative high-end modal / notification)
+  // Official WhatsApp: +91 9549376324 | Telegram: @Anna_Book_Official
   // --------------------------------------------------------------------------
   const TELEGRAM_URL = 'https://t.me/Anna_Book_Official';
+  const WHATSAPP_URL = 'https://wa.me/919549376324';
+
+  function openWhatsApp(msg) {
+    let url = WHATSAPP_URL;
+    if (msg) {
+      url += '?text=' + encodeURIComponent(msg);
+    }
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }
+
   const whatsappButtons = document.querySelectorAll('.trigger-whatsapp');
 
   whatsappButtons.forEach((btn) => {
     btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      openWhatsAppNoticeModal();
+      if (btn.tagName.toLowerCase() !== 'a' || !btn.getAttribute('href') || btn.getAttribute('href') === '#') {
+        e.preventDefault();
+        openWhatsApp('Hello AnnaBook Official, I want to get my ID / details.');
+      }
     });
   });
 
@@ -232,14 +243,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const waModal = document.getElementById('whatsappNoticeModal');
   const modalCloseBtns = document.querySelectorAll('.modal-close-trigger');
 
-  function openWhatsAppNoticeModal() {
-    if (waModal) {
-      waModal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    } else {
-      showToast('WhatsApp Support launching soon! Please join Telegram: @Anna_Book_Official');
-    }
+  function openWhatsAppNoticeModal(msg) {
+    openWhatsApp(msg || 'Hello AnnaBook Official, I want to get my ID.');
   }
+
+  window.openWhatsApp = openWhatsApp;
+  window.openWhatsAppNoticeModal = openWhatsAppNoticeModal;
 
   function closeAllModals() {
     document.querySelectorAll('.modal-backdrop').forEach((m) => {
