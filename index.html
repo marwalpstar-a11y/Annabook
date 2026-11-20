@@ -22,8 +22,15 @@
   <meta name="keywords" content="AnnaBook, AnnaBook ID, Cricket ID, Betting Exchange ID, IPL Betting, Football ID, Live Casino ID, Online Betting India, AnnaBook Official">
   <meta name="author" content="AnnaBook Official">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://x1bet.ink/">
+  <link rel="canonical" href="https://x1bet.ink/index.html">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
+  <!-- Client-Side Canonical Redirection Fallback -->
+  <script>
+    if (window.location.pathname.endsWith('/index.html')) {
+      window.location.replace('https://x1bet.ink/' + window.location.search + window.location.hash);
+    }
+  </script>
 
   <!-- Open Graph / Facebook / WhatsApp / Telegram Meta Tags -->
   <meta property="og:type" content="website">
@@ -67,7 +74,7 @@
   <header class="site-header">
     <div class="header-container">
       <!-- Animated Official Brand Logo -->
-      <a href="index.html" class="brand-logo-animated" title="AnnaBook Official">
+      <a href="/" class="brand-logo-animated" title="AnnaBook Official">
         <div class="logo-anim-container">
           <img src="assets/images/logo-base-clean.png" alt="AnnaBook Official" class="logo-layer-base">
           <img src="assets/images/logo-icon-wheel.png" alt="" class="logo-layer-wheel">
@@ -79,7 +86,7 @@
 
       <!-- Navigation Menu -->
       <nav class="nav-menu">
-        <a href="index.html" class="nav-link active">Home</a>
+        <a href="/" class="nav-link active">Home</a>
         <a href="anna-id.html" class="nav-link">Anna ID</a>
         <a href="about.html" class="nav-link">About Us</a>
         <div class="nav-dropdown-wrapper">
@@ -713,7 +720,7 @@
       <div class="footer-top-grid">
         <!-- Brand Col -->
         <div class="footer-brand-col">
-          <a href="index.html" class="brand-logo-animated" title="AnnaBook Official">
+          <a href="/" class="brand-logo-animated" title="AnnaBook Official">
             <div class="logo-anim-container">
               <img src="assets/images/logo-base-clean.png" alt="AnnaBook Official" class="logo-layer-base">
               <img src="assets/images/logo-icon-wheel.png" alt="" class="logo-layer-wheel">
@@ -738,7 +745,7 @@
         <div>
           <h4 class="footer-heading">Quick Navigation</h4>
           <ul class="footer-links-list">
-            <li><a href="index.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+            <li><a href="/" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
             <li><a href="anna-id.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Get Anna ID</a></li>
             <li><a href="about.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> About Our Legacy</a></li>
             <li><a href="services.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> All Services</a></li>

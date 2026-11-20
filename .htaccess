@@ -6,14 +6,18 @@
   RewriteEngine On
   RewriteBase /
 
-  # 1. 301 Permanent Redirect: /blog.html -> https://x1bet.ink/blog
+  # 1. 301 Permanent Redirect: /index.html -> https://x1bet.ink/
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s\?] [NC]
+  RewriteRule ^index\.html$ https://x1bet.ink/ [R=301,L,NE]
+
+  # 2. 301 Permanent Redirect: /blog.html -> https://x1bet.ink/blog
   RewriteCond %{THE_REQUEST} \s/+blog\.html[\s\?] [NC]
   RewriteRule ^blog\.html$ https://x1bet.ink/blog [R=301,L,NE]
 
-  # 2. Internal Rewrite: Map /blog and /blog/ to blog.html
+  # 3. Internal Rewrite: Map /blog and /blog/ to blog.html
   RewriteRule ^blog/?$ blog.html [L,QSA]
 
-  # 3. Clean URLs for other pages if accessed without extension
+  # 4. Clean URLs for other pages if accessed without extension
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME}.html -f
