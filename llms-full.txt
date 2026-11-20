@@ -88,7 +88,7 @@ Official Guidelines:
 - Home: https://x1bet.ink/
 - Anna ID Portal: https://x1bet.ink/anna-id.html
 - Services: https://x1bet.ink/services.html
-- Blog & Predictions: https://x1bet.ink/blog.html
+- Blog & Predictions: https://x1bet.ink/blog
 - About Us: https://x1bet.ink/about.html
 - Contact Us: https://x1bet.ink/contact.html
 - XML Sitemap: https://x1bet.ink/sitemap.xml
