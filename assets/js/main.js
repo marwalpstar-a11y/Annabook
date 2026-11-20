@@ -6,50 +6,22 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // --------------------------------------------------------------------------
-  // 1. Dynamic Sports Category Banner & 2-Slide Slider Engine
+  // 1. Home Page Hero 5-Banner Image Slider (Exclusively on Home Page)
+  // Auto-rotates every 5000ms (5 seconds) continuously in an infinite loop
   // --------------------------------------------------------------------------
   const slider = document.querySelector('.hero-slider-section');
   const sidebarItems = document.querySelectorAll('.sidebar-scroll-area .sidebar-item');
 
   if (slider) {
-    const categoryGroups = slider.querySelectorAll('.category-slide-group');
+    const slides = slider.querySelectorAll('.slider-slide');
     const dots = slider.querySelectorAll('.slider-dot');
     const prevBtn = slider.querySelector('.slider-prev');
     const nextBtn = slider.querySelector('.slider-next');
-    let currentCategory = 'cricket';
     let currentSlideIndex = 0;
     let slideInterval = null;
-    const intervalTime = 5500; // 5.5 seconds per slide
-
-    function getActiveGroup() {
-      return slider.querySelector(`.category-slide-group[data-category="${currentCategory}"]`) || categoryGroups[0];
-    }
+    const intervalTime = 5000; // Exactly 5 seconds per banner
 
     function updateSliderView() {
-      const activeGroup = getActiveGroup();
-      if (!activeGroup) return;
-
-      const isCricket = (currentCategory === 'cricket');
-
-      // Website: Only Cricket has a working image slider at the top.
-      // All other categories display a single static banner image (no rotating slider, no arrows, no dots).
-      if (isCricket) {
-        slider.classList.remove('is-static');
-      } else {
-        slider.classList.add('is-static');
-      }
-
-      // Ensure only the active category group is visible (remaining hidden)
-      categoryGroups.forEach(group => {
-        if (group === activeGroup) {
-          group.classList.add('active');
-        } else {
-          group.classList.remove('active');
-        }
-      });
-
-      // Manage slides in active category
-      const slides = activeGroup.querySelectorAll('.slider-slide');
       slides.forEach((slide, idx) => {
         if (idx === currentSlideIndex) {
           slide.classList.add('active');
@@ -58,43 +30,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // Update the 2 pagination dots for Cricket
-      if (isCricket) {
-        dots.forEach((dot, idx) => {
-          if (idx === currentSlideIndex) {
-            dot.classList.add('active');
-          } else {
-            dot.classList.remove('active');
-          }
-        });
-      }
+      dots.forEach((dot, idx) => {
+        if (idx === currentSlideIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
     }
 
     function goToSlide(index) {
-      if (currentCategory !== 'cricket') {
-        currentSlideIndex = 0;
-      } else {
-        currentSlideIndex = (index + 2) % 2;
-      }
+      if (!slides.length) return;
+      currentSlideIndex = (index + slides.length) % slides.length;
       updateSliderView();
     }
 
     function nextSlide() {
-      if (currentCategory !== 'cricket') return;
       goToSlide(currentSlideIndex + 1);
     }
 
     function prevSlide() {
-      if (currentCategory !== 'cricket') return;
       goToSlide(currentSlideIndex - 1);
     }
 
     function startAutoSlide() {
       stopAutoSlide();
-      // Only Cricket category has multiple rotating slides
-      if (currentCategory === 'cricket') {
-        slideInterval = setInterval(nextSlide, intervalTime);
-      }
+      slideInterval = setInterval(nextSlide, intervalTime);
     }
 
     function stopAutoSlide() {
@@ -104,47 +65,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    function switchCategory(categoryName) {
-      if (!categoryName) return;
-      currentCategory = categoryName;
-      currentSlideIndex = 0; // reset to slide 1 of chosen category
-
-      // Highlight active sidebar item
-      sidebarItems.forEach(item => {
-        if (item.getAttribute('data-category') === categoryName) {
-          item.classList.add('active');
-        } else {
-          item.classList.remove('active');
-        }
-      });
-
-      updateSliderView();
-      if (currentCategory === 'cricket') {
-        startAutoSlide();
-      } else {
-        stopAutoSlide();
-      }
-    }
-
     // Sidebar Category Click Listeners
     sidebarItems.forEach(item => {
       item.addEventListener('click', (e) => {
-        // MOBILE VIEW (<= 768px):
-        // Make all sports category items clickable, but do not trigger or display any content on click yet.
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          sidebarItems.forEach(i => i.classList.remove('active'));
-          item.classList.add('active');
-          return;
-        }
+        // Highlight active sidebar item
+        sidebarItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
 
-        // DESKTOP / WEB VIEW (> 768px):
-        // Dynamically update the banner image, heading, text, highlights, and content according to that selected category.
+        // Optional mapping from category to relevant banner slide
         const cat = item.getAttribute('data-category');
-        if (cat) {
-          e.preventDefault();
-          switchCategory(cat);
-        }
+        if (cat === 'cricket') goToSlide(0);
+        else if (cat === 'football') goToSlide(1);
+        else if (cat === 'casino' || cat === 'live-casino') goToSlide(2);
+        else if (cat === 'kabaddi') goToSlide(3);
+        else if (cat === 'basketball') goToSlide(4);
+
+        startAutoSlide();
       });
     });
 
@@ -165,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Pagination Dots (Exactly 2 dots for the 2 slides of active category)
+    // Pagination Dots (5 dots)
     dots.forEach((dot, idx) => {
       dot.addEventListener('click', () => {
         goToSlide(idx);
@@ -216,25 +152,27 @@ document.addEventListener('DOMContentLoaded', () => {
   // --------------------------------------------------------------------------
   // 2. WhatsApp & Telegram Interactions
   // Official WhatsApp: +91 9549376324 | Telegram: @Anna_Book_Official
+  // Pre-filled Message: "hello AnnaBook, i want to get my betting ID now"
   // --------------------------------------------------------------------------
   const TELEGRAM_URL = 'https://t.me/Anna_Book_Official';
-  const WHATSAPP_URL = 'https://wa.me/919549376324';
+  const WA_DEFAULT_MSG = 'hello AnnaBook, i want to get my betting ID now';
+  const WHATSAPP_URL = 'https://wa.me/919549376324?text=' + encodeURIComponent(WA_DEFAULT_MSG);
 
   function openWhatsApp(msg) {
-    let url = WHATSAPP_URL;
-    if (msg) {
-      url += '?text=' + encodeURIComponent(msg);
-    }
+    const text = msg || WA_DEFAULT_MSG;
+    const url = 'https://wa.me/919549376324?text=' + encodeURIComponent(text);
     window.open(url, '_blank', 'noopener,noreferrer');
   }
 
-  const whatsappButtons = document.querySelectorAll('.trigger-whatsapp');
+  const whatsappButtons = document.querySelectorAll('.trigger-whatsapp, .whatsapp-pill, a[href*="wa.me"]');
 
   whatsappButtons.forEach((btn) => {
     btn.addEventListener('click', (e) => {
-      if (btn.tagName.toLowerCase() !== 'a' || !btn.getAttribute('href') || btn.getAttribute('href') === '#') {
+      const href = btn.getAttribute('href');
+      // Open with pre-filled message
+      if (!href || href === '#' || href.indexOf('wa.me') !== -1) {
         e.preventDefault();
-        openWhatsApp('Hello AnnaBook Official, I want to get my ID / details.');
+        openWhatsApp(WA_DEFAULT_MSG);
       }
     });
   });
@@ -244,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalCloseBtns = document.querySelectorAll('.modal-close-trigger');
 
   function openWhatsAppNoticeModal(msg) {
-    openWhatsApp(msg || 'Hello AnnaBook Official, I want to get my ID.');
+    openWhatsApp(msg || WA_DEFAULT_MSG);
   }
 
   window.openWhatsApp = openWhatsApp;
