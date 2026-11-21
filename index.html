@@ -62,11 +62,23 @@
   <meta name="msapplication-TileImage" content="favicon.png">
   <meta name="theme-color" content="#070a12">
 
-  <!-- FontAwesome 6 Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Preconnect to Font & CDN Domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- Preload Critical LCP Hero Banner -->
+  <link rel="preload" as="image" href="assets/images/hero-banner-1.webp" type="image/webp" fetchpriority="high">
+
+  <!-- Optimized Google Fonts with font-display: swap -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;600;700;800&family=Rajdhani:wght@600;700&display=swap">
 
   <!-- Core Theme Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- FontAwesome 6 Icons (Deferred for non-blocking rendering) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 </head>
 <body>
 
@@ -76,9 +88,9 @@
       <!-- Animated Official Brand Logo -->
       <a href="/" class="brand-logo-animated" title="AnnaBook Official">
         <div class="logo-anim-container">
-          <img src="assets/images/logo-base-clean.png" alt="AnnaBook Official" class="logo-layer-base">
-          <img src="assets/images/logo-icon-wheel.png" alt="" class="logo-layer-wheel">
-          <img src="assets/images/logo-cricket-ball.png" alt="" class="logo-layer-ball">
+          <img src="assets/images/logo-base-clean.webp" alt="AnnaBook Official" class="logo-layer-base" width="180" height="42" decoding="async">
+          <img src="assets/images/logo-icon-wheel.webp" alt="" class="logo-layer-wheel" width="36" height="36" decoding="async">
+          <img src="assets/images/logo-cricket-ball.webp" alt="" class="logo-layer-ball" width="28" height="28" decoding="async">
           <div class="logo-layer-sweep"></div>
           <div class="logo-layer-shine"></div>
         </div>
@@ -222,23 +234,23 @@
         <div class="slider-container">
           <!-- Banner 1: Cricket & Football ID -->
           <div class="slider-slide active" data-slide="0">
-            <img src="assets/images/hero-banner-1.jpg" alt="AnnaBook Cricket & Football ID" class="slider-banner-img" loading="eager">
+            <img src="assets/images/hero-banner-1.webp" alt="AnnaBook Cricket & Football ID" class="slider-banner-img" fetchpriority="high" loading="eager" width="1024" height="576">
           </div>
           <!-- Banner 2: Football ID -->
           <div class="slider-slide" data-slide="1">
-            <img src="assets/images/hero-banner-2.jpg" alt="AnnaBook Football ID" class="slider-banner-img" loading="lazy">
+            <img src="assets/images/hero-banner-2.webp" alt="AnnaBook Football ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
           </div>
           <!-- Banner 3: Casino ID -->
           <div class="slider-slide" data-slide="2">
-            <img src="assets/images/hero-banner-3.jpg" alt="AnnaBook Casino ID" class="slider-banner-img" loading="lazy">
+            <img src="assets/images/hero-banner-3.webp" alt="AnnaBook Casino ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
           </div>
           <!-- Banner 4: Kabaddi ID -->
           <div class="slider-slide" data-slide="3">
-            <img src="assets/images/hero-banner-4.jpg" alt="AnnaBook Kabaddi ID" class="slider-banner-img" loading="lazy">
+            <img src="assets/images/hero-banner-4.webp" alt="AnnaBook Kabaddi ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
           </div>
           <!-- Banner 5: Basketball ID -->
           <div class="slider-slide" data-slide="4">
-            <img src="assets/images/hero-banner-5.jpg" alt="AnnaBook Basketball ID" class="slider-banner-img" loading="lazy">
+            <img src="assets/images/hero-banner-5.webp" alt="AnnaBook Basketball ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
           </div>
         </div>
 
@@ -434,7 +446,7 @@
           <!-- Blog Card 1: Cricket -->
           <article class="blog-card" data-category="cricket">
             <div class="blog-thumb-wrap">
-              <img src="assets/images/blog-cricket.jpg" alt="Cricket Match Analysis Guide" class="blog-thumb" loading="lazy">
+              <img src="assets/images/blog-cricket.webp" alt="Cricket Match Analysis Guide" class="blog-thumb" loading="lazy" decoding="async" width="400" height="225">
               <span class="blog-category-badge">Cricket Strategy</span>
             </div>
             <div class="blog-content">
@@ -456,7 +468,7 @@
           <!-- Blog Card 2: IPL -->
           <article class="blog-card" data-category="ipl">
             <div class="blog-thumb-wrap">
-              <img src="assets/images/blog-ipl.jpg" alt="IPL 2026 Preview" class="blog-thumb" loading="lazy">
+              <img src="assets/images/blog-ipl.webp" alt="IPL 2026 Preview" class="blog-thumb" loading="lazy" decoding="async" width="400" height="225">
               <span class="blog-category-badge">IPL Specials</span>
             </div>
             <div class="blog-content">
@@ -478,7 +490,7 @@
           <!-- Blog Card 3: Football -->
           <article class="blog-card" data-category="football">
             <div class="blog-thumb-wrap">
-              <img src="assets/images/blog-football.jpg" alt="UEFA Champions League Tips" class="blog-thumb" loading="lazy">
+              <img src="assets/images/blog-football.webp" alt="UEFA Champions League Tips" class="blog-thumb" loading="lazy" decoding="async" width="400" height="225">
               <span class="blog-category-badge">Football</span>
             </div>
             <div class="blog-content">
@@ -500,7 +512,7 @@
           <!-- Blog Card 4: Security -->
           <article class="blog-card" data-category="security">
             <div class="blog-thumb-wrap">
-              <img src="assets/images/blog-security.jpg" alt="Betting ID Security Guide" class="blog-thumb" loading="lazy">
+              <img src="assets/images/blog-security.webp" alt="Betting ID Security Guide" class="blog-thumb" loading="lazy" decoding="async" width="400" height="225">
               <span class="blog-category-badge">Security &amp; Safety</span>
             </div>
             <div class="blog-content">
@@ -722,9 +734,9 @@
         <div class="footer-brand-col">
           <a href="/" class="brand-logo-animated" title="AnnaBook Official">
             <div class="logo-anim-container">
-              <img src="assets/images/logo-base-clean.png" alt="AnnaBook Official" class="logo-layer-base">
-              <img src="assets/images/logo-icon-wheel.png" alt="" class="logo-layer-wheel">
-              <img src="assets/images/logo-cricket-ball.png" alt="" class="logo-layer-ball">
+              <img src="assets/images/logo-base-clean.webp" alt="AnnaBook Official" class="logo-layer-base" width="180" height="42" decoding="async">
+              <img src="assets/images/logo-icon-wheel.webp" alt="" class="logo-layer-wheel" width="36" height="36" decoding="async">
+              <img src="assets/images/logo-cricket-ball.webp" alt="" class="logo-layer-ball" width="28" height="28" decoding="async">
               <div class="logo-layer-sweep"></div>
               <div class="logo-layer-shine"></div>
             </div>
@@ -801,7 +813,7 @@
   </footer>
 
   <!-- Core JavaScript -->
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js" defer></script>
   <script>
     function openLoginModal() {
       const modal = document.getElementById('loginModal');

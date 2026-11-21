@@ -55,11 +55,23 @@
   <link rel="apple-touch-icon" href="favicon.png">
   <meta name="theme-color" content="#070a12">
 
-  <!-- FontAwesome 6 Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Preconnect to Font & CDN Domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- Preload Critical First Blog Featured Image -->
+  <link rel="preload" as="image" href="assets/images/blog-1.webp" type="image/webp" fetchpriority="high">
+
+  <!-- Optimized Google Fonts with font-display: swap -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;600;700;800&family=Rajdhani:wght@600;700&display=swap">
 
   <!-- Core Theme Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- FontAwesome 6 Icons (Deferred for non-blocking rendering) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
   <style>
     /* ==========================================================================
@@ -440,6 +452,8 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
       transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
       position: relative;
+      content-visibility: auto;
+      contain-intrinsic-size: 0 450px;
     }
 
     .editorial-card:hover {
@@ -686,9 +700,9 @@
       <!-- Animated Brand Logo -->
       <a href="/" class="brand-logo-animated" title="AnnaBook Official">
         <div class="logo-anim-container">
-          <img src="assets/images/logo-base-clean.png" alt="AnnaBook Official" class="logo-layer-base">
-          <img src="assets/images/logo-icon-wheel.png" alt="" class="logo-layer-wheel">
-          <img src="assets/images/logo-cricket-ball.png" alt="" class="logo-layer-ball">
+          <img src="assets/images/logo-base-clean.webp" alt="AnnaBook Official" class="logo-layer-base" width="180" height="42" decoding="async">
+          <img src="assets/images/logo-icon-wheel.webp" alt="" class="logo-layer-wheel" width="36" height="36" decoding="async">
+          <img src="assets/images/logo-cricket-ball.webp" alt="" class="logo-layer-ball" width="28" height="28" decoding="async">
           <div class="logo-layer-sweep"></div>
           <div class="logo-layer-shine"></div>
         </div>
@@ -768,7 +782,7 @@
       <!-- Post 1 -->
       <article class="editorial-card" data-category="cricket">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-1.jpg" alt="IPL 2026 Tactical Powerplay Analytics" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-1.webp" alt="IPL 2026 Tactical Powerplay Analytics" class="card-thumb-img" fetchpriority="high" loading="eager" decoding="async" width="400" height="225">
           <span class="card-category-pill">Cricket Analytics</span>
         </div>
         <div class="card-body">
@@ -790,7 +804,7 @@
       <!-- Post 2 -->
       <article class="editorial-card" data-category="cricket">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-2.jpg" alt="Inside the Mind of an Elite Batsman" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-2.webp" alt="Inside the Mind of an Elite Batsman" class="card-thumb-img" loading="eager" decoding="async" width="400" height="225">
           <span class="card-category-pill">Player Insights</span>
         </div>
         <div class="card-body">
@@ -812,7 +826,7 @@
       <!-- Post 3 -->
       <article class="editorial-card" data-category="cricket">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-3.jpg" alt="Surface Deterioration and Dew Factor" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-3.webp" alt="Surface Deterioration and Dew Factor" class="card-thumb-img" loading="eager" decoding="async" width="400" height="225">
           <span class="card-category-pill">Ground Dynamics</span>
         </div>
         <div class="card-body">
@@ -834,7 +848,7 @@
       <!-- Post 4 -->
       <article class="editorial-card" data-category="cricket">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-4.jpg" alt="ICC Champions Trophy 2026 Preview" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-4.webp" alt="ICC Champions Trophy 2026 Preview" class="card-thumb-img" loading="lazy" decoding="async" width="400" height="225">
           <span class="card-category-pill">ICC Tournament</span>
         </div>
         <div class="card-body">
@@ -856,7 +870,7 @@
       <!-- Post 5 -->
       <article class="editorial-card" data-category="trading">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-5.jpg" alt="High Velocity In-Play Sports Trading" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-5.webp" alt="High Velocity In-Play Sports Trading" class="card-thumb-img" loading="lazy" decoding="async" width="400" height="225">
           <span class="card-category-pill">Exchange Strategy</span>
         </div>
         <div class="card-body">
@@ -878,7 +892,7 @@
       <!-- Post 6 -->
       <article class="editorial-card" data-category="trading">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-6.jpg" alt="Next Generation Sports Platforms" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-6.webp" alt="Next Generation Sports Platforms" class="card-thumb-img" loading="lazy" decoding="async" width="400" height="225">
           <span class="card-category-pill">Platform Tech</span>
         </div>
         <div class="card-body">
@@ -900,7 +914,7 @@
       <!-- Post 7 -->
       <article class="editorial-card" data-category="trading">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-7.jpg" alt="Bankroll Preservation & Staking Guide" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-7.webp" alt="Bankroll Preservation & Staking Guide" class="card-thumb-img" loading="lazy" decoding="async" width="400" height="225">
           <span class="card-category-pill">Bankroll Discipline</span>
         </div>
         <div class="card-body">
@@ -922,7 +936,7 @@
       <!-- Post 8 -->
       <article class="editorial-card" data-category="trading">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-8.jpg" alt="Fintech in Sports and UPI Banking" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-8.webp" alt="Fintech in Sports and UPI Banking" class="card-thumb-img" loading="lazy" decoding="async" width="400" height="225">
           <span class="card-category-pill">Payment Security</span>
         </div>
         <div class="card-body">
@@ -944,7 +958,7 @@
       <!-- Post 9 -->
       <article class="editorial-card" data-category="trading">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-9.jpg" alt="Exchanges vs Traditional Bookmakers" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-9.webp" alt="Exchanges vs Traditional Bookmakers" class="card-thumb-img" loading="lazy" decoding="async" width="400" height="225">
           <span class="card-category-pill">Market Mechanics</span>
         </div>
         <div class="card-body">
@@ -966,7 +980,7 @@
       <!-- Post 10 -->
       <article class="editorial-card" data-category="trading">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-10.jpg" alt="Identifying Phishing Clones & Anti-Fraud" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-10.webp" alt="Identifying Phishing Clones & Anti-Fraud" class="card-thumb-img" loading="lazy" decoding="async" width="400" height="225">
           <span class="card-category-pill">Cyber Security</span>
         </div>
         <div class="card-body">
@@ -988,7 +1002,7 @@
       <!-- Post 11 -->
       <article class="editorial-card" data-category="casino">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-11.jpg" alt="Real Dealer Teen Patti Experience" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-11.webp" alt="Real Dealer Teen Patti Experience" class="card-thumb-img" loading="lazy" decoding="async" width="400" height="225">
           <span class="card-category-pill">Live Casino</span>
         </div>
         <div class="card-body">
@@ -1010,7 +1024,7 @@
       <!-- Post 12 -->
       <article class="editorial-card" data-category="casino">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-12.jpg" alt="Single Zero European Roulette Mathematics" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-12.webp" alt="Single Zero European Roulette Mathematics" class="card-thumb-img" loading="lazy" decoding="async" width="400" height="225">
           <span class="card-category-pill">Casino Strategy</span>
         </div>
         <div class="card-body">
@@ -1032,7 +1046,7 @@
       <!-- Post 13 -->
       <article class="editorial-card" data-category="football">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-13.jpg" alt="European Football Over Under Strategy" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-13.webp" alt="European Football Over Under Strategy" class="card-thumb-img" loading="lazy" decoding="async" width="400" height="225">
           <span class="card-category-pill">Football Analysis</span>
         </div>
         <div class="card-body">
@@ -1054,7 +1068,7 @@
       <!-- Post 14 -->
       <article class="editorial-card" data-category="trading">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-14.jpg" alt="120 Second Automated Cashout Standard" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-14.webp" alt="120 Second Automated Cashout Standard" class="card-thumb-img" loading="lazy" decoding="async" width="400" height="225">
           <span class="card-category-pill">Banking Speed</span>
         </div>
         <div class="card-body">
@@ -1076,7 +1090,7 @@
       <!-- Post 15 -->
       <article class="editorial-card" data-category="football">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-15.jpg" alt="Thoroughbred Derby Analytics" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-15.webp" alt="Thoroughbred Derby Analytics" class="card-thumb-img" loading="lazy" decoding="async" width="400" height="225">
           <span class="card-category-pill">Derby &amp; Racing</span>
         </div>
         <div class="card-body">
@@ -1098,7 +1112,7 @@
       <!-- Post 16 -->
       <article class="editorial-card" data-category="trading">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-16.jpg" alt="Super Master Panel Architecture" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-16.webp" alt="Super Master Panel Architecture" class="card-thumb-img" loading="lazy" decoding="async" width="400" height="225">
           <span class="card-category-pill">Agency &amp; Master</span>
         </div>
         <div class="card-body">
@@ -1120,7 +1134,7 @@
       <!-- Post 17 -->
       <article class="editorial-card" data-category="trading">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-17.jpg" alt="Quantitative Sports Arbitrage and Data Models" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-17.webp" alt="Quantitative Sports Arbitrage and Data Models" class="card-thumb-img" loading="lazy" decoding="async" width="400" height="225">
           <span class="card-category-pill">Quantitative Math</span>
         </div>
         <div class="card-body">
@@ -1142,7 +1156,7 @@
       <!-- Post 18 -->
       <article class="editorial-card" data-category="cricket">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-18.jpg" alt="Exponential Rise of WPL" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-18.webp" alt="Exponential Rise of WPL" class="card-thumb-img" loading="lazy" decoding="async" width="400" height="225">
           <span class="card-category-pill">WPL Spotlight</span>
         </div>
         <div class="card-body">
@@ -1164,7 +1178,7 @@
       <!-- Post 19 -->
       <article class="editorial-card" data-category="football">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-19.jpg" alt="Raid by Raid Volatility in Pro Kabaddi" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-19.webp" alt="Raid by Raid Volatility in Pro Kabaddi" class="card-thumb-img" loading="lazy" decoding="async" width="400" height="225">
           <span class="card-category-pill">PKL Insights</span>
         </div>
         <div class="card-body">
@@ -1186,7 +1200,7 @@
       <!-- Post 20 -->
       <article class="editorial-card" data-category="trading">
         <div class="card-thumb-wrap">
-          <img src="assets/images/blog-20.jpg" alt="Ten Costly Missteps in Sports Betting" class="card-thumb-img" loading="lazy">
+          <img src="assets/images/blog-20.webp" alt="Ten Costly Missteps in Sports Betting" class="card-thumb-img" loading="lazy" decoding="async" width="400" height="225">
           <span class="card-category-pill">Psychology of Play</span>
         </div>
         <div class="card-body">
@@ -1300,9 +1314,9 @@
         <div class="footer-brand-col">
           <a href="/" class="brand-logo-animated" title="AnnaBook Official">
             <div class="logo-anim-container">
-              <img src="assets/images/logo-base-clean.png" alt="AnnaBook Official" class="logo-layer-base">
-              <img src="assets/images/logo-icon-wheel.png" alt="" class="logo-layer-wheel">
-              <img src="assets/images/logo-cricket-ball.png" alt="" class="logo-layer-ball">
+              <img src="assets/images/logo-base-clean.webp" alt="AnnaBook Official" class="logo-layer-base" width="180" height="42" decoding="async">
+              <img src="assets/images/logo-icon-wheel.webp" alt="" class="logo-layer-wheel" width="36" height="36" decoding="async">
+              <img src="assets/images/logo-cricket-ball.webp" alt="" class="logo-layer-ball" width="28" height="28" decoding="async">
               <div class="logo-layer-sweep"></div>
               <div class="logo-layer-shine"></div>
             </div>
@@ -1393,7 +1407,7 @@
   </div>
 
   <!-- Core Scripts -->
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js" defer></script>
 
   <!-- Editorial Blog Engine (Search, Filter, Modal Reader) -->
   <script>
@@ -1405,7 +1419,7 @@
         date: 'Nov 19, 2026',
         author: 'Senior Match Analyst',
         readTime: '5 Min Read',
-        image: 'assets/images/blog-1.jpg',
+        image: 'assets/images/blog-1.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-trophy"></i> IPL 2026 RESEARCH</span>
@@ -1437,7 +1451,7 @@
         date: 'Nov 18, 2026',
         author: 'Technical Batting Consultant',
         readTime: '6 Min Read',
-        image: 'assets/images/blog-2.jpg',
+        image: 'assets/images/blog-2.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-baseball-bat-ball"></i> TACTICAL DEEP DIVE</span>
@@ -1469,7 +1483,7 @@
         date: 'Nov 17, 2026',
         author: 'Turf & Weather Desk',
         readTime: '5 Min Read',
-        image: 'assets/images/blog-3.jpg',
+        image: 'assets/images/blog-3.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-cloud-sun-rain"></i> METEOROLOGICAL IMPACT</span>
@@ -1501,7 +1515,7 @@
         date: 'Nov 16, 2026',
         author: 'Global Cricket Analyst',
         readTime: '4 Min Read',
-        image: 'assets/images/blog-4.jpg',
+        image: 'assets/images/blog-4.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-globe"></i> ICC PREVIEW</span>
@@ -1533,7 +1547,7 @@
         date: 'Nov 15, 2026',
         author: 'Senior Quantitative Trader',
         readTime: '5 Min Read',
-        image: 'assets/images/blog-5.jpg',
+        image: 'assets/images/blog-5.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-arrows-spin"></i> ARBITRAGE &amp; HEDGING</span>
@@ -1565,7 +1579,7 @@
         date: 'Nov 14, 2026',
         author: 'Product Experience Lead',
         readTime: '3 Min Read',
-        image: 'assets/images/blog-6.jpg',
+        image: 'assets/images/blog-6.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-mobile-screen"></i> MODERN ONBOARDING</span>
@@ -1597,7 +1611,7 @@
         date: 'Nov 13, 2026',
         author: 'Risk Management Officer',
         readTime: '4 Min Read',
-        image: 'assets/images/blog-7.jpg',
+        image: 'assets/images/blog-7.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-coins"></i> CAPITAL DISCIPLINE</span>
@@ -1629,7 +1643,7 @@
         date: 'Nov 12, 2026',
         author: 'Banking Security Analyst',
         readTime: '5 Min Read',
-        image: 'assets/images/blog-8.jpg',
+        image: 'assets/images/blog-8.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-shield-halved"></i> BANKING INFRASTRUCTURE</span>
@@ -1661,7 +1675,7 @@
         date: 'Nov 11, 2026',
         author: 'Market Economics Desk',
         readTime: '4 Min Read',
-        image: 'assets/images/blog-9.jpg',
+        image: 'assets/images/blog-9.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-chart-pie"></i> MARKET MATH</span>
@@ -1693,7 +1707,7 @@
         date: 'Nov 10, 2026',
         author: 'Fraud Investigation Unit',
         readTime: '5 Min Read',
-        image: 'assets/images/blog-10.jpg',
+        image: 'assets/images/blog-10.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-triangle-exclamation"></i> CRITICAL SAFETY</span>
@@ -1725,7 +1739,7 @@
         date: 'Nov 09, 2026',
         author: 'Casino Gaming Lead',
         readTime: '5 Min Read',
-        image: 'assets/images/blog-11.jpg',
+        image: 'assets/images/blog-11.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-diamond"></i> LIVE TABLE ACTION</span>
@@ -1757,7 +1771,7 @@
         date: 'Nov 08, 2026',
         author: 'Casino Probability Consultant',
         readTime: '4 Min Read',
-        image: 'assets/images/blog-12.jpg',
+        image: 'assets/images/blog-12.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-circle-notch"></i> ROULETTE MASTERCLASS</span>
@@ -1789,7 +1803,7 @@
         date: 'Nov 07, 2026',
         author: 'European Football Trader',
         readTime: '6 Min Read',
-        image: 'assets/images/blog-13.jpg',
+        image: 'assets/images/blog-13.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-futbol"></i> UEFA TACTICS</span>
@@ -1821,7 +1835,7 @@
         date: 'Nov 06, 2026',
         author: 'Financial Operations Lead',
         readTime: '4 Min Read',
-        image: 'assets/images/blog-14.jpg',
+        image: 'assets/images/blog-14.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-stopwatch"></i> CASH SPEED</span>
@@ -1853,7 +1867,7 @@
         date: 'Nov 05, 2026',
         author: 'Turf Handicapper',
         readTime: '4 Min Read',
-        image: 'assets/images/blog-15.jpg',
+        image: 'assets/images/blog-15.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-horse"></i> DERBY RACING</span>
@@ -1885,7 +1899,7 @@
         date: 'Nov 04, 2026',
         author: 'Master Syndicate Director',
         readTime: '6 Min Read',
-        image: 'assets/images/blog-16.jpg',
+        image: 'assets/images/blog-16.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-crown"></i> B2B SOLUTIONS</span>
@@ -1917,7 +1931,7 @@
         date: 'Nov 03, 2026',
         author: 'Quantitative Risk Strategist',
         readTime: '5 Min Read',
-        image: 'assets/images/blog-17.jpg',
+        image: 'assets/images/blog-17.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-square-root-variable"></i> MATHEMATICAL TRADING</span>
@@ -1949,7 +1963,7 @@
         date: 'Nov 02, 2026',
         author: 'Women\'s Sports Analyst',
         readTime: '4 Min Read',
-        image: 'assets/images/blog-18.jpg',
+        image: 'assets/images/blog-18.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-venus"></i> WPL 2027</span>
@@ -1981,7 +1995,7 @@
         date: 'Nov 01, 2026',
         author: 'Indigenous Sports Desk',
         readTime: '4 Min Read',
-        image: 'assets/images/blog-19.jpg',
+        image: 'assets/images/blog-19.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-fire-flame-curved"></i> PKL ACTION</span>
@@ -2013,7 +2027,7 @@
         date: 'Oct 30, 2026',
         author: 'Senior Risk Psychologist',
         readTime: '6 Min Read',
-        image: 'assets/images/blog-20.jpg',
+        image: 'assets/images/blog-20.webp',
         content: `
           <div class="in-article-banner-box">
             <span class="in-article-badge"><i class="fa-solid fa-chess"></i> PSYCHOLOGY OF TRADING</span>

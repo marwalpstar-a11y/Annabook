@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       header?.classList.remove('scrolled');
     }
-  });
+  }, { passive: true });
 
   const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
   const navMenu = document.querySelector('.nav-menu');
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
       date: 'Nov 14, 2026',
       author: 'AnnaBook Senior Analyst',
       readTime: '4 Min Read',
-      image: 'assets/images/blog-cricket.jpg',
+      image: 'assets/images/blog-cricket.webp',
       content: `
         <p>Cricket exchange betting is distinct from traditional bookmaking. In an exchange, you have the flexibility to <strong>Back</strong> (bet for an outcome) and <strong>Lay</strong> (bet against an outcome), unlocking powerful cashout and risk hedging opportunities.</p>
         <h4 style="color:#f5a623; margin:16px 0 8px;">1. Pitch & Dew Factor Analysis</h4>
@@ -327,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
       date: 'Nov 12, 2026',
       author: 'Sports Desk',
       readTime: '5 Min Read',
-      image: 'assets/images/blog-ipl.jpg',
+      image: 'assets/images/blog-ipl.webp',
       content: `
         <p>The 2026 Indian Premier League is poised to be the most competitive season in cricket history. With revamped mega auctions and high-octane overseas signings, each franchise presents unique market opportunities.</p>
         <h4 style="color:#f5a623; margin:16px 0 8px;">Key Teams to Watch</h4>
@@ -342,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
       date: 'Nov 09, 2026',
       author: 'Global Football Trader',
       readTime: '6 Min Read',
-      image: 'assets/images/blog-football.jpg',
+      image: 'assets/images/blog-football.webp',
       content: `
         <p>Football betting in the Champions League demands deep statistical rigor: xG (Expected Goals), high press intensity, and squad rotation patterns during European midweeks.</p>
         <h4 style="color:#f5a623; margin:16px 0 8px;">In-Play Momentum Swings</h4>
@@ -357,7 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
       date: 'Nov 05, 2026',
       author: 'Cyber & Fraud Unit',
       readTime: '3 Min Read',
-      image: 'assets/images/blog-security.jpg',
+      image: 'assets/images/blog-security.webp',
       content: `
         <p>Your security is AnnaBook's #1 commitment. In today's digital landscape, thousands of unauthorized clones attempt to impersonate legitimate exchange providers.</p>
         <h4 style="color:#f5a623; margin:16px 0 8px;">Crucial Safety Rules</h4>
