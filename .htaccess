@@ -7,6 +7,10 @@
   RewriteEngine On
   RewriteBase /
 
+  # 0. Canonical Host Enforcement: Redirect WWW to Non-WWW
+  RewriteCond %{HTTP_HOST} ^www\.x1bet\.ink$ [NC]
+  RewriteRule ^(.*)$ https://x1bet.ink/$1 [R=301,L,NE]
+
   # 1. 301 Permanent Redirect: /index.html -> https://x1bet.ink/
   RewriteCond %{THE_REQUEST} \s/+index\.html[\s\?] [NC]
   RewriteRule ^index\.html$ https://x1bet.ink/ [R=301,L,NE]
