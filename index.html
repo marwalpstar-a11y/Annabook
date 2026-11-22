@@ -27,7 +27,7 @@
 
   <!-- Client-Side Canonical Redirection Fallback -->
   <script>
-    if (window.location.pathname.endsWith('/index.html')) {
+    if (window.location.hostname.includes('x1bet.ink') && window.location.pathname.endsWith('/index.html')) {
       window.location.replace('https://x1bet.ink/' + window.location.search + window.location.hash);
     }
   </script>
@@ -229,28 +229,72 @@
     <!-- Main Content Right Area -->
     <section class="main-content-flow">
 
-      <!-- Hero Section 5-Banner Image Slider (Exclusively on Home Page) -->
+      <!-- Hero Section 16-Category Banner Slider (Exclusively on Home Page) -->
       <div class="hero-slider-section">
         <div class="slider-container">
-          <!-- Banner 1: Cricket & Football ID -->
-          <div class="slider-slide active" data-slide="0">
-            <img src="assets/images/hero-banner-1.webp" alt="AnnaBook Cricket & Football ID" class="slider-banner-img" fetchpriority="high" loading="eager" width="1024" height="576">
+          <!-- Slide 0: Cricket -->
+          <div class="slider-slide active" data-slide="0" data-category="cricket">
+            <img src="assets/images/hero-banner-1.webp" alt="AnnaBook Cricket ID" class="slider-banner-img" fetchpriority="high" loading="eager" width="1024" height="576">
           </div>
-          <!-- Banner 2: Football ID -->
-          <div class="slider-slide" data-slide="1">
+          <!-- Slide 1: Football -->
+          <div class="slider-slide" data-slide="1" data-category="football">
             <img src="assets/images/hero-banner-2.webp" alt="AnnaBook Football ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
           </div>
-          <!-- Banner 3: Casino ID -->
-          <div class="slider-slide" data-slide="2">
-            <img src="assets/images/hero-banner-3.webp" alt="AnnaBook Casino ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
+          <!-- Slide 2: BBL League -->
+          <div class="slider-slide" data-slide="2" data-category="bbl">
+            <img src="assets/images/hero-banner-bbl.webp" alt="AnnaBook BBL League ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
           </div>
-          <!-- Banner 4: Kabaddi ID -->
-          <div class="slider-slide" data-slide="3">
+          <!-- Slide 3: IPL Cricket -->
+          <div class="slider-slide" data-slide="3" data-category="ipl">
+            <img src="assets/images/hero-banner-ipl.webp" alt="AnnaBook IPL Cricket ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
+          </div>
+          <!-- Slide 4: Slot Games -->
+          <div class="slider-slide" data-slide="4" data-category="slots">
+            <img src="assets/images/hero-banner-slots.webp" alt="AnnaBook Slot Games ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
+          </div>
+          <!-- Slide 5: T20 World Cup -->
+          <div class="slider-slide" data-slide="5" data-category="t20">
+            <img src="assets/images/hero-banner-t20.webp" alt="AnnaBook T20 World Cup ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
+          </div>
+          <!-- Slide 6: Basketball -->
+          <div class="slider-slide" data-slide="6" data-category="basketball">
+            <img src="assets/images/hero-banner-5.webp" alt="AnnaBook Basketball ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
+          </div>
+          <!-- Slide 7: WPL League -->
+          <div class="slider-slide" data-slide="7" data-category="wpl">
+            <img src="assets/images/hero-banner-wpl.webp" alt="AnnaBook WPL League ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
+          </div>
+          <!-- Slide 8: Kabaddi -->
+          <div class="slider-slide" data-slide="8" data-category="kabaddi">
             <img src="assets/images/hero-banner-4.webp" alt="AnnaBook Kabaddi ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
           </div>
-          <!-- Banner 5: Basketball ID -->
-          <div class="slider-slide" data-slide="4">
-            <img src="assets/images/hero-banner-5.webp" alt="AnnaBook Basketball ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
+          <!-- Slide 9: Live Casino -->
+          <div class="slider-slide" data-slide="9" data-category="casino">
+            <img src="assets/images/hero-banner-3.webp" alt="AnnaBook Live Casino ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
+          </div>
+          <!-- Slide 10: Teen Patti -->
+          <div class="slider-slide" data-slide="10" data-category="teenpatti">
+            <img src="assets/images/hero-banner-teenpatti.webp" alt="AnnaBook Teen Patti ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
+          </div>
+          <!-- Slide 11: Tennis -->
+          <div class="slider-slide" data-slide="11" data-category="tennis">
+            <img src="assets/images/hero-banner-tennis.webp" alt="AnnaBook Tennis ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
+          </div>
+          <!-- Slide 12: Horse Racing -->
+          <div class="slider-slide" data-slide="12" data-category="horse">
+            <img src="assets/images/hero-banner-horse.webp" alt="AnnaBook Horse Racing ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
+          </div>
+          <!-- Slide 13: Table Tennis -->
+          <div class="slider-slide" data-slide="13" data-category="tabletennis">
+            <img src="assets/images/hero-banner-tabletennis.webp" alt="AnnaBook Table Tennis ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
+          </div>
+          <!-- Slide 14: Greyhounds -->
+          <div class="slider-slide" data-slide="14" data-category="greyhounds">
+            <img src="assets/images/hero-banner-greyhounds.webp" alt="AnnaBook Greyhounds ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
+          </div>
+          <!-- Slide 15: Esports -->
+          <div class="slider-slide" data-slide="15" data-category="esports">
+            <img src="assets/images/hero-banner-esports.webp" alt="AnnaBook Esports ID" class="slider-banner-img" loading="lazy" decoding="async" width="1024" height="576">
           </div>
         </div>
 
@@ -262,13 +306,24 @@
           <i class="fa-solid fa-chevron-right"></i>
         </button>
 
-        <!-- Slider Pagination Dots (5 Banners) -->
-        <div class="slider-pagination-dots">
-          <span class="slider-dot active" data-slide="0" aria-label="Banner 1"></span>
-          <span class="slider-dot" data-slide="1" aria-label="Banner 2"></span>
-          <span class="slider-dot" data-slide="2" aria-label="Banner 3"></span>
-          <span class="slider-dot" data-slide="3" aria-label="Banner 4"></span>
-          <span class="slider-dot" data-slide="4" aria-label="Banner 5"></span>
+        <!-- Slider Pagination Dots (16 Categories) -->
+        <div class="slider-pagination-dots" role="tablist" aria-label="Category Slider Dots">
+          <span class="slider-dot active" data-slide="0" aria-label="Cricket"></span>
+          <span class="slider-dot" data-slide="1" aria-label="Football"></span>
+          <span class="slider-dot" data-slide="2" aria-label="BBL League"></span>
+          <span class="slider-dot" data-slide="3" aria-label="IPL Cricket"></span>
+          <span class="slider-dot" data-slide="4" aria-label="Slot Games"></span>
+          <span class="slider-dot" data-slide="5" aria-label="T20 World Cup"></span>
+          <span class="slider-dot" data-slide="6" aria-label="Basketball"></span>
+          <span class="slider-dot" data-slide="7" aria-label="WPL League"></span>
+          <span class="slider-dot" data-slide="8" aria-label="Kabaddi"></span>
+          <span class="slider-dot" data-slide="9" aria-label="Live Casino"></span>
+          <span class="slider-dot" data-slide="10" aria-label="Teen Patti"></span>
+          <span class="slider-dot" data-slide="11" aria-label="Tennis"></span>
+          <span class="slider-dot" data-slide="12" aria-label="Horse Racing"></span>
+          <span class="slider-dot" data-slide="13" aria-label="Table Tennis"></span>
+          <span class="slider-dot" data-slide="14" aria-label="Greyhounds"></span>
+          <span class="slider-dot" data-slide="15" aria-label="Esports"></span>
         </div>
       </div>
 

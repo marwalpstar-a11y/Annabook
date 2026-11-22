@@ -6,8 +6,9 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // --------------------------------------------------------------------------
-  // 1. Home Page Hero 5-Banner Image Slider (Exclusively on Home Page)
+  // 1. Home Page Hero 16-Category Banner Slider (Exclusively on Home Page)
   // Auto-rotates every 5000ms (5 seconds) continuously in an infinite loop
+  // Fully synchronized with Left Sidebar 16 Game Categories
   // --------------------------------------------------------------------------
   const slider = document.querySelector('.hero-slider-section');
   const sidebarItems = document.querySelectorAll('.sidebar-scroll-area .sidebar-item');
@@ -20,6 +21,26 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSlideIndex = 0;
     let slideInterval = null;
     const intervalTime = 5000; // Exactly 5 seconds per banner
+
+    // Ordered list of 16 categories corresponding to slides 0 to 15
+    const categoryOrder = [
+      'cricket',
+      'football',
+      'bbl',
+      'ipl',
+      'slots',
+      't20',
+      'basketball',
+      'wpl',
+      'kabaddi',
+      'casino',
+      'teenpatti',
+      'tennis',
+      'horse',
+      'tabletennis',
+      'greyhounds',
+      'esports'
+    ];
 
     function updateSliderView() {
       slides.forEach((slide, idx) => {
@@ -37,6 +58,25 @@ document.addEventListener('DOMContentLoaded', () => {
           dot.classList.remove('active');
         }
       });
+
+      // Synchronize Left Sidebar with active slide category
+      const activeSlide = slides[currentSlideIndex];
+      const activeCategory = activeSlide ? activeSlide.getAttribute('data-category') : categoryOrder[currentSlideIndex];
+
+      if (activeCategory && sidebarItems.length > 0) {
+        sidebarItems.forEach(item => {
+          const itemCat = item.getAttribute('data-category');
+          if (itemCat === activeCategory) {
+            item.classList.add('active');
+            // Scroll active category into view inside the scrollable sidebar without shifting page
+            try {
+              item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } catch (err) {}
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      }
     }
 
     function goToSlide(index) {
@@ -65,22 +105,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Sidebar Category Click Listeners
+    // Sidebar Category Click Listeners - Instant Switching & Timer Reset
     sidebarItems.forEach(item => {
       item.addEventListener('click', (e) => {
-        // Highlight active sidebar item
-        sidebarItems.forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-
-        // Optional mapping from category to relevant banner slide
         const cat = item.getAttribute('data-category');
-        if (cat === 'cricket') goToSlide(0);
-        else if (cat === 'football') goToSlide(1);
-        else if (cat === 'casino' || cat === 'live-casino') goToSlide(2);
-        else if (cat === 'kabaddi') goToSlide(3);
-        else if (cat === 'basketball') goToSlide(4);
-
-        startAutoSlide();
+        const targetIndex = categoryOrder.indexOf(cat);
+        if (targetIndex !== -1) {
+          e.preventDefault();
+          goToSlide(targetIndex);
+          startAutoSlide(); // Reset 5-second timer
+        }
       });
     });
 
@@ -89,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
       nextBtn.addEventListener('click', (e) => {
         e.preventDefault();
         nextSlide();
-        startAutoSlide();
+        startAutoSlide(); // Reset 5-second timer
       });
     }
 
@@ -97,15 +131,15 @@ document.addEventListener('DOMContentLoaded', () => {
       prevBtn.addEventListener('click', (e) => {
         e.preventDefault();
         prevSlide();
-        startAutoSlide();
+        startAutoSlide(); // Reset 5-second timer
       });
     }
 
-    // Pagination Dots (5 dots)
+    // Pagination Dots (16 dots)
     dots.forEach((dot, idx) => {
       dot.addEventListener('click', () => {
         goToSlide(idx);
-        startAutoSlide();
+        startAutoSlide(); // Reset 5-second timer
       });
     });
 

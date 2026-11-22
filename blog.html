@@ -27,7 +27,7 @@
 
   <!-- Client-Side Canonical Redirection Fallback -->
   <script>
-    if (window.location.pathname.endsWith('/blog.html')) {
+    if (window.location.hostname.includes('x1bet.ink') && window.location.pathname.endsWith('/blog.html')) {
       window.location.replace('https://x1bet.ink/blog' + window.location.search + window.location.hash);
     }
   </script>
